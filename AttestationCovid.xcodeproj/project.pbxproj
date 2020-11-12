@@ -15,6 +15,7 @@
 		99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99121732255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld */; };
 		9912173F255DCC3300F3EA7C /* AttestationCovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912173E255DCC3300F3EA7C /* AttestationCovidTests.swift */; };
 		9912174A255DCC3300F3EA7C /* AttestationCovidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99121749255DCC3300F3EA7C /* AttestationCovidUITests.swift */; };
+		9912175C255DCDE700F3EA7C /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912175B255DCDE700F3EA7C /* UserForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		99121745255DCC3300F3EA7C /* AttestationCovidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttestationCovidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99121749255DCC3300F3EA7C /* AttestationCovidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationCovidUITests.swift; sourceTree = "<group>"; };
 		9912174B255DCC3300F3EA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9912175B255DCDE700F3EA7C /* UserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		99121726255DCC2F00F3EA7C /* AttestationCovid */ = {
 			isa = PBXGroup;
 			children = (
+				9912175A255DCDA800F3EA7C /* Views */,
 				99121727255DCC2F00F3EA7C /* AttestationCovidApp.swift */,
 				99121729255DCC2F00F3EA7C /* ContentView.swift */,
 				9912172B255DCC3200F3EA7C /* Assets.xcassets */,
@@ -134,6 +137,14 @@
 				9912174B255DCC3300F3EA7C /* Info.plist */,
 			);
 			path = AttestationCovidUITests;
+			sourceTree = "<group>";
+		};
+		9912175A255DCDA800F3EA7C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9912175B255DCDE700F3EA7C /* UserForm.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 				99121731255DCC3200F3EA7C /* Persistence.swift in Sources */,
 				9912172A255DCC2F00F3EA7C /* ContentView.swift in Sources */,
 				99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */,
+				9912175C255DCDE700F3EA7C /* UserForm.swift in Sources */,
 				99121728255DCC2F00F3EA7C /* AttestationCovidApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
