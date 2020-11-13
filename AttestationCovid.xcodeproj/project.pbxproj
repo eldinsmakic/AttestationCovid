@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		9912173F255DCC3300F3EA7C /* AttestationCovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912173E255DCC3300F3EA7C /* AttestationCovidTests.swift */; };
 		9912174A255DCC3300F3EA7C /* AttestationCovidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99121749255DCC3300F3EA7C /* AttestationCovidUITests.swift */; };
 		9912175C255DCDE700F3EA7C /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912175B255DCDE700F3EA7C /* UserForm.swift */; };
+		9964E8B3255EFDC000082D5D /* CovidUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8B2255EFDC000082D5D /* CovidUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		99121749255DCC3300F3EA7C /* AttestationCovidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestationCovidUITests.swift; sourceTree = "<group>"; };
 		9912174B255DCC3300F3EA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9912175B255DCDE700F3EA7C /* UserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
+		9964E8B2255EFDC000082D5D /* CovidUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidUser.swift; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
 		B219128D2C1C3D180882633E /* Pods-AttestationCovidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovidTests.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovidTests/Pods-AttestationCovidTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B519BE0A2420F0000643EA0E /* Pods-AttestationCovidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovidTests.release.xcconfig"; path = "Target Support Files/Pods-AttestationCovidTests/Pods-AttestationCovidTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,7 +105,6 @@
 				B219128D2C1C3D180882633E /* Pods-AttestationCovidTests.debug.xcconfig */,
 				B519BE0A2420F0000643EA0E /* Pods-AttestationCovidTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,6 +143,7 @@
 		99121726255DCC2F00F3EA7C /* AttestationCovid */ = {
 			isa = PBXGroup;
 			children = (
+				9964E8B1255EFD9400082D5D /* User */,
 				9912175A255DCDA800F3EA7C /* Views */,
 				99121727255DCC2F00F3EA7C /* AttestationCovidApp.swift */,
 				99121729255DCC2F00F3EA7C /* ContentView.swift */,
@@ -186,6 +188,14 @@
 				9912175B255DCDE700F3EA7C /* UserForm.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9964E8B1255EFD9400082D5D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				9964E8B2255EFDC000082D5D /* CovidUser.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +439,7 @@
 				9912172A255DCC2F00F3EA7C /* ContentView.swift in Sources */,
 				99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */,
 				9912175C255DCDE700F3EA7C /* UserForm.swift in Sources */,
+				9964E8B3255EFDC000082D5D /* CovidUser.swift in Sources */,
 				99121728255DCC2F00F3EA7C /* AttestationCovidApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

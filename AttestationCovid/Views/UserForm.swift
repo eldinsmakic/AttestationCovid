@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-struct CovidUser {
-    var firstName: String
-    var lastName: String
-    var birthday: Date
-    var birthPlace: String
-    var address: String
-    var locality: String
-    var zipcode: String
-
-    init() {
-        self.firstName = ""
-        self.lastName = ""
-        self.birthday = Date()
-        self.birthPlace = ""
-        self.address = ""
-        self.locality = ""
-        self.zipcode = ""
-    }
-}
-
 struct UserForm: View {
     @State var user: CovidUser
     var body: some View {
@@ -54,15 +34,25 @@ struct UserForm: View {
             }
             Spacer()
             Button("Valider") {
-                print("Hello")
+                saveUser(user: user)
             }
         }.padding()
     }
 }
 
+func saveUser(user: CovidUser) {
+    globalUser = user
+}
+
+
 struct UserForm_Previews: PreviewProvider {
     static var previews: some View {
-        UserForm(user: CovidUser())
+        if let user = globalUser {
+            UserForm(user: user)
+        } else {
+            UserForm(user: CovidUser())
+        }
+
     }
 }
 
