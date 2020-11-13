@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListUsersView: View {
     @EnvironmentObject var userData: UserData
+    @State private var editMode = EditMode.inactive
     var body: some View {
         NavigationView {
             List {
@@ -20,14 +21,34 @@ struct ListUsersView: View {
                         }
                         Spacer()
                     }
-                }.onDelete(perform: deleteItem)
+                }
+                .onMove(perform: moveItem)
+                .onDelete(perform: deleteItem)
 
                 Spacer()
-                NavigationLink(destination : UserFormView(user: CovidUser())) {
-                    Text("Ajouter un profil")
-                }
             }.navigationBarTitle(Text("Profils"))
+            .navigationBarItems(leading: EditButton(), trailing: addButton)
+            .environment(\.editMode, $editMode)
         }
+    }
+
+    private var addButton: some View {
+            switch editMode {
+            case .inactive:
+                return AnyView(Button(action: onAdd) { Image(systemName: "plus") })
+            default:
+                return AnyView(EmptyView())
+            }
+        }
+
+    func onAdd() {
+        var userCovid = CovidUser()
+        userCovid.firstName = "Nouveau Profil"
+        userData.allUsers.append(userCovid)
+    }
+
+    private func moveItem(from source: IndexSet, to destination: Int) {
+        userData.allUsers.move(fromOffsets: source, toOffset: destination)
     }
 
     private func deleteItem(at indexSet: IndexSet) {
