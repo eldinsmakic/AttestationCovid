@@ -17,14 +17,15 @@ struct ChoiceButton: View {
             HStack {
                 if isChecked {
                     Rectangle()
-                        .stroke(Color.blue)
+                        .fill(Color.blue)
                         .frame(width: 50, height: 50)
                 } else {
                     Rectangle()
-                        .fill(Color.blue)
+                        .stroke(Color.blue)
                         .frame(width: 50, height: 50)
                 }
                 Text(title)
+                    .font(.title2)
                     .padding()
             }
         }
