@@ -14,11 +14,10 @@ struct AttestationCovidApp: App {
     var body: some Scene {
         WindowGroup {
             if let user = globalUser {
-                UserForm(user: user)
+                UserFormView(user: user)
             } else {
-                UserForm(user: CovidUser())
+                UserFormView(user: CovidUser())
             }
-
 
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)

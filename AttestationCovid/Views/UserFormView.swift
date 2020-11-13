@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserForm: View {
+struct UserFormView: View {
     @State var user: CovidUser
     var body: some View {
         VStack {
@@ -48,9 +48,9 @@ func saveUser(user: CovidUser) {
 struct UserForm_Previews: PreviewProvider {
     static var previews: some View {
         if let user = globalUser {
-            UserForm(user: user)
+            UserFormView(user: user)
         } else {
-            UserForm(user: CovidUser())
+            UserFormView(user: CovidUser())
         }
 
     }
