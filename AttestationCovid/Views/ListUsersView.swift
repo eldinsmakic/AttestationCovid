@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ListUsersView: View {
-    @State var listUser: [CovidUser]
+    @EnvironmentObject var userData: UserData
     var body: some View {
         NavigationView {
             List {
-                ForEach(listUser) { user in
+                ForEach(userData.allUsers) { user in
                     HStack {
                         Spacer()
                         NavigationLink(destination : UserFormView(user: user)) {
@@ -20,12 +20,18 @@ struct ListUsersView: View {
                         }
                         Spacer()
                     }
-                }
+                }.onDelete(perform: deleteItem)
+
+                Spacer()
                 NavigationLink(destination : UserFormView(user: CovidUser())) {
                     Text("Ajouter un profil")
                 }
-            }
-        }.navigationBarTitle(Text("Profils"))
+            }.navigationBarTitle(Text("Profils"))
+        }
+    }
+
+    private func deleteItem(at indexSet: IndexSet) {
+        userData.allUsers.remove(atOffsets: indexSet)
     }
 }
 
@@ -46,6 +52,7 @@ var user2: CovidUser = {
 struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ListUsersView(listUser: [user,user2])
+        ListUsersView()
+            .environmentObject(UserData())
     }
 }

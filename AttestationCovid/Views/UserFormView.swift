@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UserFormView: View {
+    @EnvironmentObject var userData: UserData
     @State var user: CovidUser
     var body: some View {
         VStack {
@@ -34,17 +35,12 @@ struct UserFormView: View {
             }
             Spacer()
             Button("Valider") {
-                saveUser(user: user)
+                userData.allUsers.removeAll(where: { $0.id == user.id })
+                userData.allUsers.append(user)
             }
         }.padding()
     }
 }
-
-func saveUser(user: CovidUser) {
-    globalAllUsers.removeAll(where: { $0.id == user.id })
-    globalAllUsers.append(user)
-}
-
 
 struct UserForm_Previews: PreviewProvider {
     static var previews: some View {
