@@ -16,7 +16,7 @@ struct ListUsersView: View {
                 ForEach(userData.allUsers) { user in
                     HStack {
                         Spacer()
-                        NavigationLink(destination : UserFormView(user: user)) {
+                        NavigationLink(destination : UserFormView(user: user.firstName == "Nouveau Profil" ? CovidUser() : user )) {
                             Text(user.firstName)
                         }
                         Spacer()
