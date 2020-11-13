@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UsersView: View {
+struct ListUsersView: View {
     @State var listUser: [CovidUser]
     var body: some View {
         NavigationView {
@@ -20,6 +20,9 @@ struct UsersView: View {
                         }
                         Spacer()
                     }
+                }
+                NavigationLink(destination : UserFormView(user: CovidUser())) {
+                    Text("Ajouter un profil")
                 }
             }
         }.navigationBarTitle(Text("Profils"))
@@ -40,9 +43,9 @@ var user2: CovidUser = {
     return user
 }()
 
-struct UsersView_Previews: PreviewProvider {
+struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
-        UsersView(listUser: [user,user2])
+        ListUsersView(listUser: [user,user2])
     }
 }

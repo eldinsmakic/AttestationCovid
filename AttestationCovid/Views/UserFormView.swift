@@ -20,7 +20,7 @@ struct UserFormView: View {
                 TextField("Dupont", text: $user.lastName)
 
                 TitleTextField(title: "Date de naissance")
-                DatePicker("", selection: $user.birthday)
+                DatePicker("", selection: $user.birthday, displayedComponents: .date)
             }
             VStack {
                 TitleTextField(title: "Lieu de naissance")
@@ -41,7 +41,8 @@ struct UserFormView: View {
 }
 
 func saveUser(user: CovidUser) {
-    globalUser = user
+    globalAllUsers.removeAll(where: { $0.id == user.id })
+    globalAllUsers.append(user)
 }
 
 
