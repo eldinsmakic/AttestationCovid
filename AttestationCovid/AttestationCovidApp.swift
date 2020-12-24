@@ -13,8 +13,8 @@ struct AttestationCovidApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ListUsersView()
-                .environmentObject(UserData())
+            MainView()
+                .environmentObject(AppRouting())
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ListUsersView: View {
+    @EnvironmentObject var appRouting: AppRouting
     @EnvironmentObject var userData: UserData
     @State private var editMode = EditMode.inactive
+
     var body: some View {
         NavigationView {
             List {
@@ -29,6 +31,9 @@ struct ListUsersView: View {
             }.navigationBarTitle(Text("Profils"))
             .navigationBarItems(leading: EditButton(), trailing: addButton)
             .environment(\.editMode, $editMode)
+        }.onAppear{
+            appRouting.router = .profile
+            print(appRouting.router)
         }
     }
 
@@ -74,6 +79,7 @@ struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
         ListUsersView()
+            .environmentObject(AppRouting())
             .environmentObject(UserData())
     }
 }
