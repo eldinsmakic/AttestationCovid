@@ -7,7 +7,28 @@
 
 import SwiftUI
 import Combine
+import Defaults
 
 public final class UserData: ObservableObject {
-    @Published var allUsers = globalAllUsers
+
+    static var shared = UserData()
+
+    private init() {
+        self.allUsers = globalUsers
+    }
+
+    @Published var allUsers: [CovidUser] = []
+
+    public var globalUsers: [CovidUser] {
+        get { Defaults[.users] }
+        set { Defaults[.users] = newValue }
+    }
 }
+
+extension Defaults.Keys {
+    static let users = Key<[CovidUser]>("users", default: [])
+}
+
+
+
+

@@ -35,8 +35,9 @@ struct UserFormView: View {
             }
             Spacer()
             Button("Valider") {
-                userData.allUsers.removeAll(where: { $0.id == user.id })
-                userData.allUsers.append(user)
+                userData.globalUsers.removeAll(where: { $0.id == user.id })
+                userData.globalUsers.append(user)
+                userData.allUsers = userData.globalUsers
             }
         }.padding()
     }

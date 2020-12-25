@@ -28,12 +28,12 @@ struct ListUsersView: View {
                 .onDelete(perform: deleteItem)
 
                 Spacer()
-            }.navigationBarTitle(Text("Profils"))
+            }.onAppear{
+                appRouting.router = .profile
+            }
+            .navigationBarTitle(Text("Profils"))
             .navigationBarItems(leading: EditButton(), trailing: addButton)
             .environment(\.editMode, $editMode)
-        }.onAppear{
-            appRouting.router = .profile
-            print(appRouting.router)
         }
     }
 
@@ -49,37 +49,27 @@ struct ListUsersView: View {
     func onAdd() {
         var userCovid = CovidUser()
         userCovid.firstName = "Nouveau Profil"
-        userData.allUsers.append(userCovid)
+        userData.globalUsers.append(userCovid)
+        userData.allUsers = userData.globalUsers
     }
 
     private func moveItem(from source: IndexSet, to destination: Int) {
-        userData.allUsers.move(fromOffsets: source, toOffset: destination)
+        userData.globalUsers.move(fromOffsets: source, toOffset: destination)
+        userData.allUsers = userData.globalUsers
     }
 
     private func deleteItem(at indexSet: IndexSet) {
-        userData.allUsers.remove(atOffsets: indexSet)
+        userData.globalUsers.remove(atOffsets: indexSet)
+        userData.allUsers = userData.globalUsers
+        print(userData.globalUsers)
     }
 }
-
-var user: CovidUser = {
-    var user = CovidUser()
-    user.firstName = "Eldin"
-
-    return user
-}()
-
-var user2: CovidUser = {
-    var user = CovidUser()
-    user.firstName = "Maman"
-
-    return user
-}()
 
 struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
         ListUsersView()
             .environmentObject(AppRouting())
-            .environmentObject(UserData())
+            .environmentObject(UserData.shared)
     }
 }

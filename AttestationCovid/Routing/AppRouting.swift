@@ -9,7 +9,7 @@ import Combine
 
 public enum Router {
     case main
-    case choose
+    case selectProfile
     case profile
 }
 

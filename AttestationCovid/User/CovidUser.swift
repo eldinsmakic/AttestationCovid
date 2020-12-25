@@ -34,13 +34,7 @@ public var globalUser: CovidUser? {
     set { Defaults[.user] = newValue }
 }
 
-public var globalAllUsers: [CovidUser] {
-    get { Defaults[.users] }
-    set { Defaults[.users] = newValue }
-}
-
 
 extension Defaults.Keys {
     static let user = Key<CovidUser?>("user", default: nil)
-    static let users = Key<[CovidUser]>("users", default: [])
 }
