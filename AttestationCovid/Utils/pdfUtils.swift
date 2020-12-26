@@ -187,14 +187,13 @@ func drawText(text: String, x: CGFloat,  y: CGFloat, font: UIFont = font, to pdf
 
   let textAttributes: [NSAttributedString.Key: Any] =
     [NSAttributedString.Key.font: font]
-  // 3
+
   let attributedTitle = NSAttributedString(
     string: text,
     attributes: textAttributes
   )
-  // 4
+
   let textStringSize = attributedTitle.size()
-  // 5
 
   let titleStringRect = CGRect(
     x: x,
@@ -202,7 +201,7 @@ func drawText(text: String, x: CGFloat,  y: CGFloat, font: UIFont = font, to pdf
     width: textStringSize.width,
     height: textStringSize.height
   )
-  // 6
+
   let page = pdf.page(at: 0)
 
   let textAnnotation = PDFAnnotation(bounds: titleStringRect, forType: .text, withProperties: nil)
