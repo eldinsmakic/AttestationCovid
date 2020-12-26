@@ -24,8 +24,13 @@
 		9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */; };
 		9916A581255F3982003FFCD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A580255F3982003FFCD2 /* MainView.swift */; };
 		9916A587255F3CFE003FFCD2 /* AppRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A586255F3CFE003FFCD2 /* AppRouting.swift */; };
+		996327932596AD68003E34D4 /* PdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996327922596AD68003E34D4 /* PdfView.swift */; };
 		9964E8B3255EFDC000082D5D /* CovidUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8B2255EFDC000082D5D /* CovidUser.swift */; };
 		9964E8BB255F000300082D5D /* ListUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8BA255F000300082D5D /* ListUsersView.swift */; };
+		9986BEBE2596717600F1F98A /* pdfUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BEBD2596717500F1F98A /* pdfUtils.swift */; };
+		9986BEC62596730100F1F98A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BEC52596730100F1F98A /* Profile.swift */; };
+		9986BECB2596738A00F1F98A /* Raison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BECA2596738A00F1F98A /* Raison.swift */; };
+		99D704752596C23B0004024F /* attestation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99D704742596C23B0004024F /* attestation.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +77,14 @@
 		9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		9916A580255F3982003FFCD2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9916A586255F3CFE003FFCD2 /* AppRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouting.swift; sourceTree = "<group>"; };
+		996327922596AD68003E34D4 /* PdfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfView.swift; sourceTree = "<group>"; };
 		9964E8B2255EFDC000082D5D /* CovidUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidUser.swift; sourceTree = "<group>"; };
 		9964E8BA255F000300082D5D /* ListUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUsersView.swift; sourceTree = "<group>"; };
+		9986BEBD2596717500F1F98A /* pdfUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pdfUtils.swift; sourceTree = "<group>"; };
+		9986BEC52596730100F1F98A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		9986BECA2596738A00F1F98A /* Raison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raison.swift; sourceTree = "<group>"; };
+		99D704742596C23B0004024F /* attestation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = attestation.pdf; sourceTree = "<group>"; };
+		99D7047F2596C88C0004024F /* AttestationCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AttestationCovid.entitlements; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
 		B219128D2C1C3D180882633E /* Pods-AttestationCovidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovidTests.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovidTests/Pods-AttestationCovidTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B519BE0A2420F0000643EA0E /* Pods-AttestationCovidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovidTests.release.xcconfig"; path = "Target Support Files/Pods-AttestationCovidTests/Pods-AttestationCovidTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +166,9 @@
 		99121726255DCC2F00F3EA7C /* AttestationCovid */ = {
 			isa = PBXGroup;
 			children = (
+				99D7047F2596C88C0004024F /* AttestationCovid.entitlements */,
+				99D704732596C2250004024F /* Ressources */,
+				9986BEBC2596715000F1F98A /* Utils */,
 				9916A585255F3C92003FFCD2 /* Routing */,
 				9964E8B1255EFD9400082D5D /* User */,
 				9912175A255DCDA800F3EA7C /* Views */,
@@ -203,6 +217,7 @@
 				9964E8BA255F000300082D5D /* ListUsersView.swift */,
 				9916A56F255F2E29003FFCD2 /* MovingMotifFormView.swift */,
 				9916A580255F3982003FFCD2 /* MainView.swift */,
+				996327922596AD68003E34D4 /* PdfView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,8 +243,26 @@
 			children = (
 				9964E8B2255EFDC000082D5D /* CovidUser.swift */,
 				9916A562255F207B003FFCD2 /* UserData.swift */,
+				9986BEC52596730100F1F98A /* Profile.swift */,
+				9986BECA2596738A00F1F98A /* Raison.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		9986BEBC2596715000F1F98A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9986BEBD2596717500F1F98A /* pdfUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		99D704732596C2250004024F /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				99D704742596C23B0004024F /* attestation.pdf */,
+			);
+			path = Ressources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9912172F255DCC3200F3EA7C /* Preview Assets.xcassets in Resources */,
+				99D704752596C23B0004024F /* attestation.pdf in Resources */,
 				9912172C255DCC3200F3EA7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +506,7 @@
 				99121731255DCC3200F3EA7C /* Persistence.swift in Sources */,
 				9912172A255DCC2F00F3EA7C /* ContentView.swift in Sources */,
 				9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */,
+				9986BEC62596730100F1F98A /* Profile.swift in Sources */,
 				9916A563255F207B003FFCD2 /* UserData.swift in Sources */,
 				9916A570255F2E29003FFCD2 /* MovingMotifFormView.swift in Sources */,
 				99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */,
@@ -479,7 +514,10 @@
 				9916A581255F3982003FFCD2 /* MainView.swift in Sources */,
 				9916A587255F3CFE003FFCD2 /* AppRouting.swift in Sources */,
 				9964E8B3255EFDC000082D5D /* CovidUser.swift in Sources */,
+				9986BEBE2596717600F1F98A /* pdfUtils.swift in Sources */,
 				9964E8BB255F000300082D5D /* ListUsersView.swift in Sources */,
+				996327932596AD68003E34D4 /* PdfView.swift in Sources */,
+				9986BECB2596738A00F1F98A /* Raison.swift in Sources */,
 				99121728255DCC2F00F3EA7C /* AttestationCovidApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,6 +676,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AttestationCovid/AttestationCovid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AttestationCovid/Preview Content\"";
 				DEVELOPMENT_TEAM = PL39FQM22S;
@@ -661,6 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AttestationCovid/AttestationCovid.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"AttestationCovid/Preview Content\"";
 				DEVELOPMENT_TEAM = PL39FQM22S;
