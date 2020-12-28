@@ -22,7 +22,7 @@ let ys = [
 let sizeFont = CGFloat(20.0)
 let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
 
-func generatePdf(profile: Profile, reasons: [Raison], pdfBase: Data) {
+func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: Data) {
     let dateFormater = DateFormatter()
     dateFormater.dateStyle = .short
     dateFormater.timeStyle = .short

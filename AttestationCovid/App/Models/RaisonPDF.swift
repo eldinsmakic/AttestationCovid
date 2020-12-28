@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Raison: String {
+enum RaisonPDF: String {
     case travail
     case sante
     case famille
