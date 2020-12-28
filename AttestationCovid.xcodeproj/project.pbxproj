@@ -14,7 +14,6 @@
 		9912172A255DCC2F00F3EA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99121729255DCC2F00F3EA7C /* ContentView.swift */; };
 		9912172C255DCC3200F3EA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9912172B255DCC3200F3EA7C /* Assets.xcassets */; };
 		9912172F255DCC3200F3EA7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9912172E255DCC3200F3EA7C /* Preview Assets.xcassets */; };
-		99121731255DCC3200F3EA7C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99121730255DCC3200F3EA7C /* Persistence.swift */; };
 		99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99121732255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld */; };
 		9912173F255DCC3300F3EA7C /* AttestationCovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912173E255DCC3300F3EA7C /* AttestationCovidTests.swift */; };
 		9912174A255DCC3300F3EA7C /* AttestationCovidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99121749255DCC3300F3EA7C /* AttestationCovidUITests.swift */; };
@@ -63,7 +62,6 @@
 		99121729255DCC2F00F3EA7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9912172B255DCC3200F3EA7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9912172E255DCC3200F3EA7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		99121730255DCC3200F3EA7C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		99121733255DCC3200F3EA7C /* AttestationCovid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AttestationCovid.xcdatamodel; sourceTree = "<group>"; };
 		99121735255DCC3200F3EA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9912173A255DCC3300F3EA7C /* AttestationCovidTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttestationCovidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,15 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				99D7047F2596C88C0004024F /* AttestationCovid.entitlements */,
+				995761DB259A9FAF00A25B5D /* App */,
 				99D704732596C2250004024F /* Ressources */,
-				9986BEBC2596715000F1F98A /* Utils */,
-				9916A585255F3C92003FFCD2 /* Routing */,
-				9964E8B1255EFD9400082D5D /* Models */,
-				9912175A255DCDA800F3EA7C /* Views */,
-				99121727255DCC2F00F3EA7C /* AttestationCovidApp.swift */,
-				99121729255DCC2F00F3EA7C /* ContentView.swift */,
 				9912172B255DCC3200F3EA7C /* Assets.xcassets */,
-				99121730255DCC3200F3EA7C /* Persistence.swift */,
 				99121735255DCC3200F3EA7C /* Info.plist */,
 				99121732255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld */,
 				9912172D255DCC3200F3EA7C /* Preview Content */,
@@ -238,6 +230,19 @@
 				9916A586255F3CFE003FFCD2 /* AppRouting.swift */,
 			);
 			path = Routing;
+			sourceTree = "<group>";
+		};
+		995761DB259A9FAF00A25B5D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				99121727255DCC2F00F3EA7C /* AttestationCovidApp.swift */,
+				99121729255DCC2F00F3EA7C /* ContentView.swift */,
+				9986BEBC2596715000F1F98A /* Utils */,
+				9916A585255F3C92003FFCD2 /* Routing */,
+				9964E8B1255EFD9400082D5D /* Models */,
+				9912175A255DCDA800F3EA7C /* Views */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		9964E8B1255EFD9400082D5D /* Models */ = {
@@ -511,7 +516,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99121731255DCC3200F3EA7C /* Persistence.swift in Sources */,
 				9912172A255DCC2F00F3EA7C /* ContentView.swift in Sources */,
 				9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */,
 				9986BEC62596730100F1F98A /* Profile.swift in Sources */,

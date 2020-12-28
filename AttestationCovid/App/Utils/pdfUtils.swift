@@ -19,7 +19,7 @@ let ys = [
   "animaux": 330,
 ]
 
-let sizeFont = CGFloat(11.0)
+let sizeFont = CGFloat(20.0)
 let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
 
 func generatePdf(profile: Profile, reasons: [Raison], pdfBase: Data) {
@@ -202,13 +202,16 @@ func drawText(text: String, x: CGFloat,  y: CGFloat, font: UIFont = font, to pdf
     height: textStringSize.height
   )
 
+  print(textStringSize.width)
+    print(textStringSize.height)
   let page = pdf.page(at: 0)
 
   let textAnnotation = PDFAnnotation(bounds: titleStringRect, forType: .text, withProperties: nil)
     textAnnotation.contents =  text
     textAnnotation.font = font
-    textAnnotation.color = .black
+    textAnnotation.color = .red
+    textAnnotation.backgroundColor = .red
+    textAnnotation.fontColor = .red
     page?.addAnnotation(textAnnotation)
-    pdf.insert(page!, at: 0)
 }
 

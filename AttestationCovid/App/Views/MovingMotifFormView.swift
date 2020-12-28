@@ -22,23 +22,20 @@ struct MovingMotifFormView: View {
                     ChoiceButton(title: "Activite", isChecked: false)
                     ChoiceButton(title: "Activite", isChecked: false)
                     Spacer()
-                    Button("Valider") {
-                        appRouting.router = Router.selectProfile
-                    }.padding()
-                }.onAppear {
-                    appRouting.router = .main
                 }
-            } else {
+
                 Spacer()
                 List(users.globalUsers, id: \.id) { user in
                     ChoiceButton(title: user.firstName , isChecked: false)
                 }
                 Spacer()
                 Button("Valider") {
-                    appRouting.router = Router.selectProfile
+
                 }.padding()
                 Spacer()
             }
+        }.onAppear {
+            appRouting.router = .main
         }
     }
 }

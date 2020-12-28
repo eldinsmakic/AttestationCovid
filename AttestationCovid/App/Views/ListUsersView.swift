@@ -44,7 +44,7 @@ struct ListUsersView: View {
             default:
                 return AnyView(EmptyView())
             }
-        }
+    }
 
     func onAdd() {
         var userCovid = CovidUser()
