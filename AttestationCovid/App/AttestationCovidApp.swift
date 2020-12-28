@@ -9,14 +9,12 @@ import SwiftUI
 
 @main
 struct AttestationCovidApp: App {
-    let userData = UserData.shared
+    let profil = ProfilLocalData.shared
     var body: some Scene {
         WindowGroup {
             MainView()
                 .environmentObject(AppRouting())
-                .environmentObject(userData)
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(profil)
         }
     }
 }

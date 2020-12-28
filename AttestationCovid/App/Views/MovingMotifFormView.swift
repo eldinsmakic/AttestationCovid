@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MovingMotifFormView: View {
     @EnvironmentObject var appRouting: AppRouting
-    @EnvironmentObject var users: UserData
+    @EnvironmentObject var profilLocalData: ProfilLocalData
     var body: some View {
         VStack{
-            if users.globalUsers.isEmpty {
+            if profilLocalData.globalUsers.isEmpty {
                 Text("Vous devez créer un profil")
             } else if (appRouting.router == Router.main) {
                 VStack {
@@ -25,7 +25,7 @@ struct MovingMotifFormView: View {
                 }
 
                 Spacer()
-                List(users.globalUsers, id: \.id) { user in
+                List(profilLocalData.globalUsers, id: \.id) { user in
                     ChoiceButton(title: user.firstName , isChecked: false)
                 }
                 Spacer()
@@ -44,6 +44,6 @@ struct MovingMotifFormView_Previews: PreviewProvider {
     static var previews: some View {
         MovingMotifFormView()
             .environmentObject(AppRouting())
-            .environmentObject(UserData.shared)
+            .environmentObject(ProfilLocalData.shared)
     }
 }

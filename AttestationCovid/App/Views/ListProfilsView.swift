@@ -1,5 +1,5 @@
 //
-//  UsersView.swift
+//  ListProfilsView.swift
 //  AttestationCovid
 //
 //  Created by eldin smakic on 13/11/2020.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct ListUsersView: View {
+struct ListProfilsView: View {
     @EnvironmentObject var appRouting: AppRouting
-    @EnvironmentObject var userData: UserData
+    @EnvironmentObject var profilLocalData: ProfilLocalData
     @State private var editMode = EditMode.inactive
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(userData.allUsers) { user in
+                ForEach(profilLocalData.allUsers) { user in
                     HStack {
                         Spacer()
-                        NavigationLink(destination : UserFormView(user: user.firstName == "Nouveau Profil" ? CovidUser() : user )) {
+                        NavigationLink(destination : ProfilDetailView(user: user.firstName == "Nouveau Profil" ? Profil() : user )) {
                             Text(user.firstName)
                         }
                         Spacer()
@@ -47,29 +47,29 @@ struct ListUsersView: View {
     }
 
     func onAdd() {
-        var userCovid = CovidUser()
-        userCovid.firstName = "Nouveau Profil"
-        userData.globalUsers.append(userCovid)
-        userData.allUsers = userData.globalUsers
+        var user = Profil()
+        user.firstName = "Nouveau Profil"
+        profilLocalData.globalUsers.append(user)
+        profilLocalData.allUsers = profilLocalData.globalUsers
     }
 
     private func moveItem(from source: IndexSet, to destination: Int) {
-        userData.globalUsers.move(fromOffsets: source, toOffset: destination)
-        userData.allUsers = userData.globalUsers
+        profilLocalData.globalUsers.move(fromOffsets: source, toOffset: destination)
+        profilLocalData.allUsers = profilLocalData.globalUsers
     }
 
     private func deleteItem(at indexSet: IndexSet) {
-        userData.globalUsers.remove(atOffsets: indexSet)
-        userData.allUsers = userData.globalUsers
-        print(userData.globalUsers)
+        profilLocalData.globalUsers.remove(atOffsets: indexSet)
+        profilLocalData.allUsers = profilLocalData.globalUsers
+        print(profilLocalData.globalUsers)
     }
 }
 
 struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ListUsersView()
+        ListProfilsView()
             .environmentObject(AppRouting())
-            .environmentObject(UserData.shared)
+            .environmentObject(ProfilLocalData.shared)
     }
 }

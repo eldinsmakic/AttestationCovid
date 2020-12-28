@@ -1,5 +1,5 @@
 //
-//  UserForm.swift
+//  ProfilDetailView.swift
 //  AttestationCovid
 //
 //  Created by eldin smakic on 12/11/2020.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct UserFormView: View {
-    @EnvironmentObject var userData: UserData
-    @State var user: CovidUser
+struct ProfilDetailView: View {
+    @EnvironmentObject var profilLocalData: ProfilLocalData
+    @State var user: Profil
     var body: some View {
         VStack {
             Spacer()
@@ -35,20 +35,20 @@ struct UserFormView: View {
             }
             Spacer()
             Button("Valider") {
-                userData.globalUsers.removeAll(where: { $0.id == user.id })
-                userData.globalUsers.append(user)
-                userData.allUsers = userData.globalUsers
+                profilLocalData.globalUsers.removeAll(where: { $0.id == user.id })
+                profilLocalData.globalUsers.append(user)
+                profilLocalData.allUsers = profilLocalData.globalUsers
             }
         }.padding()
     }
 }
 
-struct UserForm_Previews: PreviewProvider {
+struct ProfilDetailView_Previews: PreviewProvider {
     static var previews: some View {
         if let user = globalUser {
-            UserFormView(user: user)
+            ProfilDetailView(user: user)
         } else {
-            UserFormView(user: CovidUser())
+            ProfilDetailView(user: Profil())
         }
 
     }

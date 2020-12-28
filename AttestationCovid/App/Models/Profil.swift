@@ -8,7 +8,7 @@
 import Foundation
 import Defaults
 
-public struct CovidUser: Codable, Identifiable {
+public struct Profil: Codable, Identifiable {
     public var id = UUID()
     var firstName: String
     var lastName: String
@@ -29,12 +29,12 @@ public struct CovidUser: Codable, Identifiable {
     }
 }
 
-public var globalUser: CovidUser? {
+public var globalUser: Profil? {
     get { Defaults[.user] }
     set { Defaults[.user] = newValue }
 }
 
 
 extension Defaults.Keys {
-    static let user = Key<CovidUser?>("user", default: nil)
+    static let user = Key<Profil?>("user", default: nil)
 }

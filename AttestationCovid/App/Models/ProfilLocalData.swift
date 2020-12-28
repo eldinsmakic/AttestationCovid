@@ -9,24 +9,24 @@ import SwiftUI
 import Combine
 import Defaults
 
-public final class UserData: ObservableObject {
+public final class ProfilLocalData: ObservableObject {
 
-    static var shared = UserData()
+    static var shared = ProfilLocalData()
 
     private init() {
         self.allUsers = globalUsers
     }
 
-    @Published var allUsers: [CovidUser] = []
+    @Published var allUsers: [Profil] = []
 
-    public var globalUsers: [CovidUser] {
+    public var globalUsers: [Profil] {
         get { Defaults[.users] }
         set { Defaults[.users] = newValue }
     }
 }
 
 extension Defaults.Keys {
-    static let users = Key<[CovidUser]>("users", default: [])
+    static let users = Key<[Profil]>("users", default: [])
 }
 
 
