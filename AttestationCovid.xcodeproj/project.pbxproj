@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */; };
 		9916A581255F3982003FFCD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A580255F3982003FFCD2 /* MainView.swift */; };
 		9916A587255F3CFE003FFCD2 /* AppRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A586255F3CFE003FFCD2 /* AppRouting.swift */; };
+		995761D7259A9EBF00A25B5D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 995761D6259A9EBF00A25B5D /* ComposableArchitecture */; };
 		996327932596AD68003E34D4 /* PdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996327922596AD68003E34D4 /* PdfView.swift */; };
 		9964E8B3255EFDC000082D5D /* CovidUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8B2255EFDC000082D5D /* CovidUser.swift */; };
 		9964E8BB255F000300082D5D /* ListUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8BA255F000300082D5D /* ListUsersView.swift */; };
@@ -95,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995761D7259A9EBF00A25B5D /* ComposableArchitecture in Frameworks */,
 				18194D8EC471B9DE32D50C58 /* Pods_AttestationCovid.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,7 +172,7 @@
 				99D704732596C2250004024F /* Ressources */,
 				9986BEBC2596715000F1F98A /* Utils */,
 				9916A585255F3C92003FFCD2 /* Routing */,
-				9964E8B1255EFD9400082D5D /* User */,
+				9964E8B1255EFD9400082D5D /* Models */,
 				9912175A255DCDA800F3EA7C /* Views */,
 				99121727255DCC2F00F3EA7C /* AttestationCovidApp.swift */,
 				99121729255DCC2F00F3EA7C /* ContentView.swift */,
@@ -238,7 +240,7 @@
 			path = Routing;
 			sourceTree = "<group>";
 		};
-		9964E8B1255EFD9400082D5D /* User */ = {
+		9964E8B1255EFD9400082D5D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				9964E8B2255EFDC000082D5D /* CovidUser.swift */,
@@ -246,7 +248,7 @@
 				9986BEC52596730100F1F98A /* Profile.swift */,
 				9986BECA2596738A00F1F98A /* Raison.swift */,
 			);
-			path = User;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9986BEBC2596715000F1F98A /* Utils */ = {
@@ -283,6 +285,9 @@
 			dependencies = (
 			);
 			name = AttestationCovid;
+			packageProductDependencies = (
+				995761D6259A9EBF00A25B5D /* ComposableArchitecture */,
+			);
 			productName = AttestationCovid;
 			productReference = 99121724255DCC2F00F3EA7C /* AttestationCovid.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +362,9 @@
 				Base,
 			);
 			mainGroup = 9912171B255DCC2F00F3EA7C;
+			packageReferences = (
+				995761D5259A9EBF00A25B5D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 99121725255DCC2F00F3EA7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -846,6 +854,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		995761D5259A9EBF00A25B5D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		995761D6259A9EBF00A25B5D /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995761D5259A9EBF00A25B5D /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		99121732255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld */ = {
