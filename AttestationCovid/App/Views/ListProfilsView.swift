@@ -11,21 +11,21 @@ struct ListProfilsView: View {
     @EnvironmentObject var appRouting: AppRouting
     @EnvironmentObject var profilLocalData: ProfilLocalData
     @State private var editMode = EditMode.inactive
-
+    @State private var profils = [Profil]()
     var body: some View {
         NavigationView {
             List {
-                ForEach(profilLocalData.allUsers) { user in
+                ForEach(profils.indices, id: \.self) { indice in
                     HStack {
                         Spacer()
-                        NavigationLink(destination : ProfilDetailView(user: user.firstName == "Nouveau Profil" ? Profil() : user )) {
-                            Text(user.firstName)
+                            NavigationLink(destination : ProfilDetailView(user: $profils[indice])) {
+                                Text(profils[indice].firstName)
                         }
                         Spacer()
                     }
                 }
-                .onMove(perform: moveItem)
-                .onDelete(perform: deleteItem)
+                .onMove(perform: moveItem2)
+                .onDelete(perform: deleteItem2)
 
                 Spacer()
             }.onAppear{
@@ -40,7 +40,7 @@ struct ListProfilsView: View {
     private var addButton: some View {
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: onAdd) { Image(systemName: "plus") })
+                return AnyView(Button(action: onAdd2) { Image(systemName: "plus") })
             default:
                 return AnyView(EmptyView())
             }
@@ -53,15 +53,29 @@ struct ListProfilsView: View {
         profilLocalData.allUsers = profilLocalData.globalUsers
     }
 
+    func onAdd2() {
+        var user = Profil()
+        user.firstName = "Nouveau Profil"
+        profils.append(user)
+    }
+
     private func moveItem(from source: IndexSet, to destination: Int) {
         profilLocalData.globalUsers.move(fromOffsets: source, toOffset: destination)
         profilLocalData.allUsers = profilLocalData.globalUsers
+    }
+
+    private func moveItem2(from source: IndexSet, to destination: Int) {
+        profils.move(fromOffsets: source, toOffset: destination)
     }
 
     private func deleteItem(at indexSet: IndexSet) {
         profilLocalData.globalUsers.remove(atOffsets: indexSet)
         profilLocalData.allUsers = profilLocalData.globalUsers
         print(profilLocalData.globalUsers)
+    }
+
+    private func deleteItem2(at indexSet: IndexSet) {
+        profils.remove(atOffsets: indexSet)
     }
 }
 

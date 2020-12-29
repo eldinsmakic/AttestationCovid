@@ -38,3 +38,15 @@ public var globalUser: Profil? {
 extension Defaults.Keys {
     static let user = Key<Profil?>("user", default: nil)
 }
+
+extension Array where Element == Profil {
+
+    func index(of element: Element) -> Int? {
+        for i in 0..<self.count {
+            if self[i].id == element.id {
+                return i
+            }
+        }
+        return nil
+    }
+}

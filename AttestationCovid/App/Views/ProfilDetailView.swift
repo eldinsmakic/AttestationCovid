@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfilDetailView: View {
     @EnvironmentObject var profilLocalData: ProfilLocalData
-    @State var user: Profil
+    @Binding var user: Profil
     var body: some View {
         VStack {
             Spacer()
@@ -43,16 +43,16 @@ struct ProfilDetailView: View {
     }
 }
 
-struct ProfilDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        if let user = globalUser {
-            ProfilDetailView(user: user)
-        } else {
-            ProfilDetailView(user: Profil())
-        }
-
-    }
-}
+//struct ProfilDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        if let user = globalUser {
+//            ProfilDetailView(user: user)
+//        } else {
+//            ProfilDetailView(user: Profil())
+//        }
+//
+//    }
+//}
 
 
 struct TitleTextField: View {
