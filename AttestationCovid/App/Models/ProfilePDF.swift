@@ -14,7 +14,7 @@ struct ProfilePDF: Codable {
     let placeofbirth: String
     let address: String
     let zipcode: String
-    let city: Date
+    let city: String
     let datesortie: Date
-    let heuresortie: Data
+    let heuresortie: Date
 }
