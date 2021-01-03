@@ -5,17 +5,21 @@
 //  Created by eldin smakic on 03/01/2021.
 //
 
-func generateQRCode(from string: String) -> UIImage? {
-    let data = string.data(using: String.Encoding.ascii)
+import UIKit
+import CoreImage.CIFilterBuiltins
 
-    if let filter = CIFilter(name: "CIQRCodeGenerator") {
-        filter.setValue(data, forKey: "inputMessage")
-        let transform = CGAffineTransform(scaleX: 3, y: 3)
+let context = CIContext()
+let filter = CIFilter.qrCodeGenerator()
 
-        if let output = filter.outputImage?.transformed(by: transform) {
-            return UIImage(ciImage: output)
+func generateQRCode(from string: String) -> UIImage {
+    let data = Data(string.utf8)
+    filter.setValue(data, forKey: "inputMessage")
+
+    if let outputImage = filter.outputImage {
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            return UIImage(cgImage: cgimg)
         }
     }
 
-    return nil
+    return UIImage(systemName: "xmark.circle") ?? UIImage()
 }
