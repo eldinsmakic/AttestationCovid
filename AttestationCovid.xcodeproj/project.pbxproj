@@ -29,6 +29,7 @@
 		9986BEBE2596717600F1F98A /* pdfUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BEBD2596717500F1F98A /* pdfUtils.swift */; };
 		9986BEC62596730100F1F98A /* ProfilePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BEC52596730100F1F98A /* ProfilePDF.swift */; };
 		9986BECB2596738A00F1F98A /* RaisonPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BECA2596738A00F1F98A /* RaisonPDF.swift */; };
+		99B4C6E325A269C200C6E135 /* qrcodeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */; };
 		99D704752596C23B0004024F /* attestation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99D704742596C23B0004024F /* attestation.pdf */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,19 @@
 			remoteInfo = AttestationCovid;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		99B4C6D325A242A200C6E135 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		12A31ECE05C56EE3F5E67BAB /* Pods-AttestationCovid-AttestationCovidUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid-AttestationCovidUITests.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid-AttestationCovidUITests/Pods-AttestationCovid-AttestationCovidUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,6 +94,15 @@
 		9986BEBD2596717500F1F98A /* pdfUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pdfUtils.swift; sourceTree = "<group>"; };
 		9986BEC52596730100F1F98A /* ProfilePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePDF.swift; sourceTree = "<group>"; };
 		9986BECA2596738A00F1F98A /* RaisonPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisonPDF.swift; sourceTree = "<group>"; };
+		99B4C6B925A242A200C6E135 /* FileProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderExtension.swift; sourceTree = "<group>"; };
+		99B4C6BB25A242A200C6E135 /* FileProviderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderItem.swift; sourceTree = "<group>"; };
+		99B4C6BD25A242A200C6E135 /* FileProviderEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderEnumerator.swift; sourceTree = "<group>"; };
+		99B4C6BF25A242A200C6E135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99B4C6C025A242A200C6E135 /* test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = test.entitlements; sourceTree = "<group>"; };
+		99B4C6C725A242A200C6E135 /* DocumentActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentActionViewController.swift; sourceTree = "<group>"; };
+		99B4C6CA25A242A200C6E135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		99B4C6CC25A242A200C6E135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrcodeUtils.swift; sourceTree = "<group>"; };
 		99D704742596C23B0004024F /* attestation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = attestation.pdf; sourceTree = "<group>"; };
 		99D7047F2596C88C0004024F /* AttestationCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AttestationCovid.entitlements; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +168,8 @@
 				99121726255DCC2F00F3EA7C /* AttestationCovid */,
 				9912173D255DCC3300F3EA7C /* AttestationCovidTests */,
 				99121748255DCC3300F3EA7C /* AttestationCovidUITests */,
+				99B4C6B825A242A200C6E135 /* test */,
+				99B4C6C625A242A200C6E135 /* testUI */,
 				99121725255DCC2F00F3EA7C /* Products */,
 				67882ABF0754F68574AF9516 /* Pods */,
 				7AC7025F95AD1CD7AEE0DA20 /* Frameworks */,
@@ -257,8 +282,31 @@
 			isa = PBXGroup;
 			children = (
 				9986BEBD2596717500F1F98A /* pdfUtils.swift */,
+				99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		99B4C6B825A242A200C6E135 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				99B4C6B925A242A200C6E135 /* FileProviderExtension.swift */,
+				99B4C6BB25A242A200C6E135 /* FileProviderItem.swift */,
+				99B4C6BD25A242A200C6E135 /* FileProviderEnumerator.swift */,
+				99B4C6BF25A242A200C6E135 /* Info.plist */,
+				99B4C6C025A242A200C6E135 /* test.entitlements */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		99B4C6C625A242A200C6E135 /* testUI */ = {
+			isa = PBXGroup;
+			children = (
+				99B4C6C725A242A200C6E135 /* DocumentActionViewController.swift */,
+				99B4C6C925A242A200C6E135 /* MainInterface.storyboard */,
+				99B4C6CC25A242A200C6E135 /* Info.plist */,
+			);
+			path = testUI;
 			sourceTree = "<group>";
 		};
 		99D704732596C2250004024F /* Ressources */ = {
@@ -281,6 +329,7 @@
 				99121721255DCC2F00F3EA7C /* Frameworks */,
 				99121722255DCC2F00F3EA7C /* Resources */,
 				E4EC5F0A002CC42913EE7EBC /* [CP] Embed Pods Frameworks */,
+				99B4C6D325A242A200C6E135 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -519,6 +568,7 @@
 				9916A570255F2E29003FFCD2 /* MovingMotifFormView.swift in Sources */,
 				99121734255DCC3200F3EA7C /* AttestationCovid.xcdatamodeld in Sources */,
 				9912175C255DCDE700F3EA7C /* ProfilDetailView.swift in Sources */,
+				99B4C6E325A269C200C6E135 /* qrcodeUtils.swift in Sources */,
 				9916A581255F3982003FFCD2 /* MainView.swift in Sources */,
 				9916A587255F3CFE003FFCD2 /* AppRouting.swift in Sources */,
 				9964E8B3255EFDC000082D5D /* Profil.swift in Sources */,
@@ -560,6 +610,17 @@
 			targetProxy = 99121746255DCC3300F3EA7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		99B4C6C925A242A200C6E135 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99B4C6CA25A242A200C6E135 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9912174C255DCC3300F3EA7C /* Debug */ = {
@@ -682,6 +743,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AttestationCovid/AttestationCovid.entitlements;
@@ -706,6 +768,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6980F75E38C49E124CBEF322 /* Pods-AttestationCovid.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = AttestationCovid/AttestationCovid.entitlements;
