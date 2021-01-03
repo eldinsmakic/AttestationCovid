@@ -30,6 +30,7 @@
 		9986BEC62596730100F1F98A /* ProfilePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BEC52596730100F1F98A /* ProfilePDF.swift */; };
 		9986BECB2596738A00F1F98A /* RaisonPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9986BECA2596738A00F1F98A /* RaisonPDF.swift */; };
 		99B4C6E325A269C200C6E135 /* qrcodeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */; };
+		99B4C6E825A27FA700C6E135 /* PDFImageAnnotationn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */; };
 		99D704752596C23B0004024F /* attestation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99D704742596C23B0004024F /* attestation.pdf */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		99B4C6CA25A242A200C6E135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		99B4C6CC25A242A200C6E135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrcodeUtils.swift; sourceTree = "<group>"; };
+		99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFImageAnnotationn.swift; sourceTree = "<group>"; };
 		99D704742596C23B0004024F /* attestation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = attestation.pdf; sourceTree = "<group>"; };
 		99D7047F2596C88C0004024F /* AttestationCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AttestationCovid.entitlements; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				9986BEBD2596717500F1F98A /* pdfUtils.swift */,
 				99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */,
+				99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				9916A581255F3982003FFCD2 /* MainView.swift in Sources */,
 				9916A587255F3CFE003FFCD2 /* AppRouting.swift in Sources */,
 				9964E8B3255EFDC000082D5D /* Profil.swift in Sources */,
+				99B4C6E825A27FA700C6E135 /* PDFImageAnnotationn.swift in Sources */,
 				9986BEBE2596717600F1F98A /* pdfUtils.swift in Sources */,
 				9964E8BB255F000300082D5D /* ListProfilsView.swift in Sources */,
 				996327932596AD68003E34D4 /* PdfView.swift in Sources */,
