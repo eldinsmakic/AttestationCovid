@@ -20,8 +20,8 @@ let ys = [
 ]
 
 let sizeFont = CGFloat(11.0)
-//let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
-let font = UIFont.systemFont(ofSize: 11)
+let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
+//let font = UIFont.systemFont(ofSize: 11)
 
 func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
     let dateFormater = DateFormatter()
@@ -31,10 +31,9 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
 
     let creationInstant = Date()
 
-    let creationDate = dateFormater.string(from: creationInstant)
+    let creationDate = creationInstant.getDate()
 
-    dateFormater.dateFormat = "hh:mm"
-    let creationHour = dateFormater.string(from: creationInstant)
+    let creationHour = creationInstant.getHours()
 
     let lastname = profile.lastname
     let firstname = profile.firstname
@@ -77,63 +76,36 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
     page1.draw(text: "\(address) \(zipcode) \(city)", x: 133, y: 625)
 
     reasons.forEach {
-        page1.draw(text: "X", x: 73, y: CGFloat(ys[$0.rawValue]!))
+        page1.draw(text: "X", x: 72, y: CGFloat(ys[$0.rawValue]!))
     }
 
     page1.draw(text: profile.city, x: 105, y: 286)
-    page1.draw(text: profile.datesortie.description, x: 91, y: 267)
-    page1.draw(text: profile.heuresortie.description, x: 312, y: 267)
+    page1.draw(text: profile.datesortie.getDate(), x: 91, y: 267)
+    page1.draw(text: profile.heuresortie.getHours(), x: 312, y: 267)
 
-    page1.draw(text: creationDate.description, x: 314, y: 189)
+//    page1.draw(text: creationDate, x: 314, y: 189)
 
     page1.draw(text: "Date de création", x: 479, y: 130)
-    page1.draw(text: "\(creationDate.description) à \(creationHour.description)", x: 470, y: 124)
+    page1.draw(text: "\(creationDate) à \(creationHour)", x: 470, y: 124)
 
-    let qrTitle1 = "QR-code contenant les informations "
-    let qrTitle2 = "de votre attestation numérique"
-
-    page1.draw(text: "\(qrTitle1) \n + \(qrTitle2)", x: 440, y: 230)
+//    let qrTitle1 = "QR-code contenant les informations "
+//    let qrTitle2 = "de votre attestation numérique"
+//
+//    page1.draw(text: "\(qrTitle1) \n + \(qrTitle2)", x: 440, y: 230)
 
     let qrCode = generateQRCode(from: data)
     let bounds = pdfDoc.page(at: 0)?.bounds(for: PDFDisplayBox.mediaBox)
     let size = bounds?.size
     pdfDoc.page(at: 0)?.draw(image: qrCode, x: size!.width - 125, y:  125, width: 92, height: 92)
-    
-//  page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 230, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) })
 
     let page2 = PDFPage()
     let bounds2 = pdfDoc.page(at: 0)?.bounds(for: PDFDisplayBox.mediaBox)
     let size2 = bounds2?.size
     page2.draw(image: generateQRCode(from: data), x: 50, y: size2!.height - 400, width: 300, height: 300)
     pdfDoc.insert(page2, at: 1)
-//  pdfDoc.addPage()
-//  const page2 = pdfDoc.getPages()[1]
-//  page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 40, size: 11, font, color: rgb(1, 1, 1) })
-//  page2.drawImage(qrImage, {
-//    x: 50,
-//    y: page2.getHeight() - 350,
-//    width: 300,
-//    height: 300,
-//  })
-//
-//  const pdfBytes = await pdfDoc.save()
-//
-//  return new Blob([pdfBytes], { type: 'application/pdf' })
-//}
-//
-//function getIdealFontSize (font, text, maxWidth, minSize, defaultSize) {
-//  let currentSize = defaultSize
-//  let textWidth = font.widthOfTextAtSize(text, defaultSize)
-//
-//  while (textWidth > maxWidth && currentSize > minSize) {
-//    textWidth = font.widthOfTextAtSize(text, --currentSize)
-//  }
-//
-//  return textWidth > maxWidth ? null : currentSize
 
     do {
         try pdfDoc.dataRepresentation()?.write(to: pdfBase)
-        print("hello")
     } catch let error {
         print(error.localizedDescription)
     }
@@ -144,8 +116,12 @@ extension PDFPage {
 
     func draw(text: String, x: CGFloat,  y: CGFloat, fontSize: CGFloat = 11,  font: UIFont = font) {
 
+      let fontGeneral = font.withSize(fontSize)
       let textAttributes: [NSAttributedString.Key: Any] =
-        [NSAttributedString.Key.font: font]
+        [
+            NSAttributedString.Key.font: fontGeneral,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
 
       let attributedTitle = NSAttributedString(
         string: text,
@@ -154,12 +130,16 @@ extension PDFPage {
 
       let textStringSize = attributedTitle.size()
 
+//      let framesetter = CTFramesetterCreateWithAttributedString(attributedTitle)
+//      let textSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRange(), nil, largestSize, nil)
+
       let titleStringRect = CGRect(
         x: x,
-        y: y,
-        width: ceil(textStringSize.width),
-        height: ceil(textStringSize.height)
+        y: y - 5,
+        width: ceil(textStringSize.width) + 5,
+        height: ceil(textStringSize.height) + 5
       )
+
 
       let textAnnotation = PDFAnnotation(bounds: titleStringRect, forType: .freeText, withProperties: nil)
         textAnnotation.contents =  text
