@@ -10,23 +10,27 @@ import SwiftUI
 struct MovingMotifFormView: View {
     @EnvironmentObject var appRouting: AppRouting
     @EnvironmentObject var profilLocalData: ProfilLocalData
+
+    @State var raisons: [Raison] = []
     var body: some View {
         VStack{
             if profilLocalData.globalUsers.isEmpty {
                 Text("Vous devez créer un profil")
             } else if (appRouting.router == Router.main) {
                 VStack {
+                    Text("Motif de déplacement")
                     Spacer()
-                    ChoiceButton(title: "Activite", isChecked: false)
-                    ChoiceButton(title: "Activite", isChecked: false)
-                    ChoiceButton(title: "Activite", isChecked: false)
-                    ChoiceButton(title: "Activite", isChecked: false)
+                    List(raisons) { raison in
+                        ChoiceButton(title: raison.code, isChecked: false)
+                    }
                     Spacer()
                 }
-
-                Spacer()
-                List(profilLocalData.globalUsers, id: \.id) { user in
-                    ChoiceButton(title: user.firstName , isChecked: false)
+                VStack {
+                    Spacer()
+                    Text("Profils disponnible")
+                    List(profilLocalData.globalUsers, id: \.id) { user in
+                        ChoiceButton(title: user.firstName , isChecked: false)
+                    }
                 }
                 Spacer()
                 Button("Valider") {
@@ -36,6 +40,12 @@ struct MovingMotifFormView: View {
             }
         }.onAppear {
             appRouting.router = .main
+            do {
+                let data = try Data(contentsOf: dataUrl)
+                raisons = try JSONDecoder().decode([Raison].self, from: data)
+            } catch let error {
+                print(error)
+            }
         }
     }
 }
