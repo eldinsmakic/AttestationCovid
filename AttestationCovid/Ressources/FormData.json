@@ -1,0 +1,34 @@
+[
+        {
+          "code": "travail",
+          "label": "Déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle ou le lieu d'enseignement et de formation, déplacements professionnels ne pouvant être différés ;"
+        },
+        {
+          "code": "sante",
+          "label": "Déplacements pour des consultations et soins ne pouvant être assurés à distance et ne pouvant être différés ou pour l'achat de produits de santé ;"
+        },
+        {
+          "code": "famille",
+          "label": "Déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou précaires ou pour la garde d'enfants ;"
+        },
+        {
+          "code": "handicap",
+          "label": "Déplacements des personnes en situation de handicap et de leur accompagnant ;"
+        },
+        {
+          "code": "convocation",
+          "label": "Déplacements pour répondre à une convocation judiciaire ou administrative ;"
+        },
+        {
+          "code": "missions",
+          "label": "Déplacements pour participer à des missions d'intérêt général sur demande de l'autorité administrative ;"
+        },
+        {
+          "code": "transits",
+          "label": "Déplacements liés à des transits ferroviaires ou aériens pour des déplacements de longues distances ;"
+        },
+        {
+          "code": "animaux",
+          "label": "Déplacements brefs, dans un rayon maximal d'un kilomètre autour du domicile pour les besoins des animaux de compagnie."
+        }
+]
