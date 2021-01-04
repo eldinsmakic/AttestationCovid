@@ -101,8 +101,10 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
     
 //  page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 230, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) })
 
-//
-    let page2 = PDFPage(image: generateQRCode(from: data))!
+    let page2 = PDFPage()
+    let bounds2 = pdfDoc.page(at: 0)?.bounds(for: PDFDisplayBox.mediaBox)
+    let size2 = bounds2?.size
+    page2.draw(image: generateQRCode(from: data), x: 50, y: size2!.height - 400, width: 300, height: 300)
     pdfDoc.insert(page2, at: 1)
 //  pdfDoc.addPage()
 //  const page2 = pdfDoc.getPages()[1]
@@ -139,6 +141,7 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
 
 
 extension PDFPage {
+
     func draw(text: String, x: CGFloat,  y: CGFloat, fontSize: CGFloat = 11,  font: UIFont = font) {
 
       let textAttributes: [NSAttributedString.Key: Any] =
@@ -180,35 +183,3 @@ extension PDFPage {
         self.addAnnotation(imageStamp)
     }
 }
-func drawText(text: String, x: CGFloat,  y: CGFloat, font: UIFont = font, to pdf: PDFDocument) {
-
-  let textAttributes: [NSAttributedString.Key: Any] =
-    [NSAttributedString.Key.font: font]
-
-  let attributedTitle = NSAttributedString(
-    string: text,
-    attributes: textAttributes
-  )
-
-  let textStringSize = attributedTitle.size()
-
-  let titleStringRect = CGRect(
-    x: x,
-    y: y,
-    width: ceil(textStringSize.width),
-    height: ceil(textStringSize.height)
-  )
-
-  print(textStringSize.width)
-    print(textStringSize.height)
-  let page = pdf.page(at: 0)
-
-  let textAnnotation = PDFAnnotation(bounds: titleStringRect, forType: .freeText, withProperties: nil)
-    textAnnotation.contents =  text
-    textAnnotation.font = font
-    textAnnotation.fontColor = .black
-    textAnnotation.color = .clear
-    textAnnotation.backgroundColor = .clear
-    page?.addAnnotation(textAnnotation)
-}
-
