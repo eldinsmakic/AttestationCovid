@@ -130,9 +130,6 @@ extension PDFPage {
 
       let textStringSize = attributedTitle.size()
 
-//      let framesetter = CTFramesetterCreateWithAttributedString(attributedTitle)
-//      let textSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRange(), nil, largestSize, nil)
-
       let titleStringRect = CGRect(
         x: x,
         y: y - 5,
