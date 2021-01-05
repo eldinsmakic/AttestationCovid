@@ -16,8 +16,12 @@ struct ListPDFView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(directoryContents, id: \.self ) { file in
-                    NavigationLink(file.lastPathComponent, destination: PdfView())
+                if directoryContents.isEmpty {
+                    Text("Aucune attestations pour l'instant")
+                } else {
+                    List(directoryContents, id: \.self ) { file in
+                        NavigationLink(file.lastPathComponent, destination: PdfView())
+                    }
                 }
             }
         }.onAppear {
