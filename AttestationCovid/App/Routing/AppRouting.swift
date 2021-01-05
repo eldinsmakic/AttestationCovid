@@ -11,6 +11,7 @@ public enum Router {
     case main
     case selectProfile
     case profile
+    case attestationPDFs
 }
 
 public final class AppRouting: ObservableObject {
