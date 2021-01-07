@@ -6,6 +6,30 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
+struct ListProfilsState: Equatable {
+
+    var profils = [Profil]()
+}
+
+enum ListProfilsAction: Equatable {
+    case add(Profil)
+    case remove(Profil)
+    case edit(Profil)
+}
+
+let ListProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { state, action, _ in
+    switch action {
+    case .add(let profil):
+        state.profils.append(profil)
+    case .remove(let profil):
+        state.profils.removeAll(where: { $0 == profil })
+    default:
+        return .none
+    }
+    return .none
+}
 
 struct ListProfilsView: View {
     @EnvironmentObject var appRouting: AppRouting
