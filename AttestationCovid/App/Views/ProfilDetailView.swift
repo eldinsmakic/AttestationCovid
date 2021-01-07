@@ -6,40 +6,55 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ProfilDetailView: View {
     @EnvironmentObject var profilLocalData: ProfilLocalData
-    @Binding var user: Profil
+
+    let store: Store<ListProfilsState, ListProfilsAction>
+    @State var user: Profil
+
     var body: some View {
-        VStack {
-            Spacer()
+        WithViewStore(self.store) { viewStore in
             VStack {
-                TitleTextField(title: "Prénom")
-                TextField("Camille", text: $user.firstName)
+                Spacer()
+                VStack {
+                    TitleTextField(title: "Prénom")
+                    TextField(
+                        "Camille",
+                        text: Binding(
+                            get: { user.firstName },
+                            set: { user.firstName = $0
+                                viewStore.send(.edit(user))
+                                print("sending user")
+                            }
+                        )
+                    )
 
-                TitleTextField(title: "Nom")
-                TextField("Dupont", text: $user.lastName)
+                    TitleTextField(title: "Nom")
+                    TextField("Dupont", text: $user.lastName)
 
-                TitleTextField(title: "Date de naissance")
-                DatePicker("", selection: $user.birthday, displayedComponents: .date)
-            }
-            VStack {
-                TitleTextField(title: "Lieu de naissance")
-                TextField("Lille", text: $user.birthPlace)
+                    TitleTextField(title: "Date de naissance")
+                    DatePicker("", selection: $user.birthday, displayedComponents: .date)
+                }
+                VStack {
+                    TitleTextField(title: "Lieu de naissance")
+                    TextField("Lille", text: $user.birthPlace)
 
-                TitleTextField(title: "Ville")
-                TextField("Lille", text: $user.address)
+                    TitleTextField(title: "Ville")
+                    TextField("Lille", text: $user.address)
 
-                TitleTextField(title: "Code Postal")
-                TextField("59370", text: $user.zipcode)
-            }
-            Spacer()
-            Button("Valider") {
-                profilLocalData.globalUsers.removeAll(where: { $0.id == user.id })
-                profilLocalData.globalUsers.append(user)
-                profilLocalData.allUsers = profilLocalData.globalUsers
-            }
-        }.padding()
+                    TitleTextField(title: "Code Postal")
+                    TextField("59370", text: $user.zipcode)
+                }
+                Spacer()
+                Button("Valider") {
+                    profilLocalData.globalUsers.removeAll(where: { $0.id == user.id })
+                    profilLocalData.globalUsers.append(user)
+                    profilLocalData.allUsers = profilLocalData.globalUsers
+                }
+            }.padding()
+        }
     }
 }
 

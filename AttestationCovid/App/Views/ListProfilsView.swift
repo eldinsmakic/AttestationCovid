@@ -25,8 +25,12 @@ let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
         state.profils.append(profil)
     case .remove(let indexSet):
         state.profils.remove(atOffsets: indexSet)
-    default:
-        return .none
+    case .edit(let profil):
+        state.profils = state.profils.map( { if ($0.id == profil.id) {
+            return profil
+        }
+            return $0
+        })
     }
     return .none
 }
@@ -45,7 +49,7 @@ struct ListProfilsView: View {
                     ForEach(viewStore.state.profils) { profil in
                         HStack {
                             Spacer()
-                            NavigationLink(destination : ProfilDetailView(user: profil)) {
+                            NavigationLink(destination : ProfilDetailView(store: store, user: profil)) {
                                     Text(profil.firstName)
                             }
                             Spacer()
