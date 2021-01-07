@@ -26,32 +26,71 @@ struct ProfilDetailView: View {
                             get: { user.firstName },
                             set: { user.firstName = $0
                                 viewStore.send(.edit(user))
-                                print("sending user")
                             }
                         )
                     )
 
                     TitleTextField(title: "Nom")
-                    TextField("Dupont", text: $user.lastName)
+                    TextField(
+                        "Dupont",
+                        text: Binding(
+                            get: { user.lastName },
+                            set: { user.lastName = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        )
+                    )
 
                     TitleTextField(title: "Date de naissance")
-                    DatePicker("", selection: $user.birthday, displayedComponents: .date)
+                    DatePicker(
+                        "",
+                        selection: Binding(
+                            get: { user.birthday },
+                            set: { user.birthday = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        ),
+                        displayedComponents: .date
+                    )
                 }
                 VStack {
                     TitleTextField(title: "Lieu de naissance")
-                    TextField("Lille", text: $user.birthPlace)
+                    TextField(
+                        "Lille",
+                        text: Binding(
+                            get: { user.birthPlace },
+                            set: { user.birthPlace = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        )
+                    )
 
                     TitleTextField(title: "Ville")
-                    TextField("Lille", text: $user.address)
+                    TextField(
+                        "Lille",
+                        text: Binding(
+                            get: { user.locality },
+                            set: { user.locality = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        )
+                    )
 
                     TitleTextField(title: "Code Postal")
-                    TextField("59370", text: $user.zipcode)
+                    TextField(
+                        "59370",
+                        text: Binding(
+                            get: { user.zipcode },
+                            set: { user.zipcode = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        )
+                    )
                 }
                 Spacer()
                 Button("Valider") {
-                    profilLocalData.globalUsers.removeAll(where: { $0.id == user.id })
-                    profilLocalData.globalUsers.append(user)
-                    profilLocalData.allUsers = profilLocalData.globalUsers
+                    viewStore.send(.edit(user))
+
                 }
             }.padding()
         }
