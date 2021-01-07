@@ -70,21 +70,14 @@ struct ListProfilsView: View {
         WithViewStore(self.store) { viewStore -> AnyView in
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: {onAdd2(viewStore: viewStore)}) { Image(systemName: "plus") })
+                return AnyView(Button(action: {onAdd(viewStore)}) { Image(systemName: "plus") })
             default:
                 return AnyView(EmptyView())
             }
         }
     }
 
-    func onAdd() {
-        var user = Profil()
-        user.firstName = "Nouveau Profil"
-        profilLocalData.globalUsers.append(user)
-        profilLocalData.allUsers = profilLocalData.globalUsers
-    }
-
-    func onAdd2(viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
+    func onAdd(_ viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
         var user = Profil()
         user.firstName = "Nouveau Profil"
         viewStore.send(.add(user))
