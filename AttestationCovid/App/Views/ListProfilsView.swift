@@ -15,7 +15,7 @@ struct ListProfilsState: Equatable {
 
 enum ListProfilsAction: Equatable {
     case add(Profil)
-    case remove(Profil)
+    case remove(IndexSet)
     case edit(Profil)
 }
 
@@ -23,8 +23,8 @@ let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
     switch action {
     case .add(let profil):
         state.profils.append(profil)
-    case .remove(let profil):
-        state.profils.removeAll(where: { $0 == profil })
+    case .remove(let indexSet):
+        state.profils.remove(atOffsets: indexSet)
     default:
         return .none
     }
@@ -52,6 +52,10 @@ struct ListProfilsView: View {
                         }
                         Spacer()
                     }
+                    .onMove(perform: moveItem2)
+                    .onDelete(perform: {index in deleteItem(at: index, with: viewStore )})
+
+                    Spacer()
                 }
                 .onMove(perform: moveItem2)
                 .onDelete(perform: deleteItem2)
@@ -92,14 +96,8 @@ struct ListProfilsView: View {
         profils.move(fromOffsets: source, toOffset: destination)
     }
 
-    private func deleteItem(at indexSet: IndexSet) {
-        profilLocalData.globalUsers.remove(atOffsets: indexSet)
-        profilLocalData.allUsers = profilLocalData.globalUsers
-        print(profilLocalData.globalUsers)
-    }
-
-    private func deleteItem2(at indexSet: IndexSet) {
-        profils.remove(atOffsets: indexSet)
+    private func deleteItem(at indexSet: IndexSet, with viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
+        viewStore.send(.remove(indexSet))
     }
 }
 
