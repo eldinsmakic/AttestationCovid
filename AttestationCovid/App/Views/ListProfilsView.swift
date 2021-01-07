@@ -5,12 +5,12 @@
 //  Created by eldin smakic on 13/11/2020.
 //
 
+import Defaults
 import SwiftUI
 import ComposableArchitecture
 
 struct ListProfilsState: Equatable {
-
-    var profils = [Profil]()
+    var profils = ProfilLocalData.shared.globalUsers
 }
 
 enum ListProfilsAction: Equatable {
@@ -32,6 +32,7 @@ let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
             return $0
         })
     }
+    ProfilLocalData.shared.globalUsers = state.profils
     return .none
 }
 
@@ -39,9 +40,8 @@ struct ListProfilsView: View {
     let store: Store<ListProfilsState, ListProfilsAction>
 
     @EnvironmentObject var appRouting: AppRouting
-    @EnvironmentObject var profilLocalData: ProfilLocalData
     @State private var editMode = EditMode.inactive
-    @State private var profils = [Profil]()
+
     var body: some View {
         WithViewStore(self.store) { viewStore in
             NavigationView {
@@ -54,23 +54,16 @@ struct ListProfilsView: View {
                             }
                             Spacer()
                         }
-                        Spacer()
                     }
-                    .onMove(perform: moveItem2)
+//                    .onMove(perform: moveItem2)
                     .onDelete(perform: {index in deleteItem(at: index, with: viewStore )})
 
                     Spacer()
                 }
-                .onMove(perform: moveItem2)
-                .onDelete(perform: deleteItem2)
-
-                Spacer()
-            }.onAppear{
-                appRouting.router = .profile
+                .navigationBarTitle(Text("Profils"))
+                .navigationBarItems(leading: EditButton(), trailing: addButton)
+                .environment(\.editMode, $editMode)
             }
-            .navigationBarTitle(Text("Profils"))
-            .navigationBarItems(leading: EditButton(), trailing: addButton)
-            .environment(\.editMode, $editMode)
         }
     }
 
@@ -91,14 +84,13 @@ struct ListProfilsView: View {
         viewStore.send(.add(user))
     }
 
-    private func moveItem(from source: IndexSet, to destination: Int) {
-        profilLocalData.globalUsers.move(fromOffsets: source, toOffset: destination)
-        profilLocalData.allUsers = profilLocalData.globalUsers
-    }
+//    private func moveItem(from source: IndexSet, to destination: Int) {
+//        profilLocalData.globalUsers.move(fromOffsets: source, toOffset: destination)
+//    }
 
-    private func moveItem2(from source: IndexSet, to destination: Int) {
-        profils.move(fromOffsets: source, toOffset: destination)
-    }
+//    private func moveItem2(from source: IndexSet, to destination: Int) {
+//        profils.move(fromOffsets: source, toOffset: destination)
+//    }
 
     private func deleteItem(at indexSet: IndexSet, with viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
         viewStore.send(.remove(indexSet))
@@ -108,8 +100,7 @@ struct ListProfilsView: View {
 struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ListProfilsView()
+        ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
             .environmentObject(AppRouting())
-            .environmentObject(ProfilLocalData.shared)
     }
 }
