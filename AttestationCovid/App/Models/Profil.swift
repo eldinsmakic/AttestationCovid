@@ -8,7 +8,7 @@
 import Foundation
 import Defaults
 
-public struct Profil: Codable, Identifiable {
+public struct Profil: Codable, Identifiable, Equatable {
     public var id = UUID()
     var firstName: String
     var lastName: String
