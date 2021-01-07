@@ -23,7 +23,7 @@ struct MainView: View {
                     Text("Home")
                 }.tag(Router.main)
 
-            ListProfilsView()
+            ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
                 .environmentObject(appRouting)
                 .environmentObject(profilLocalData)
                 .tabItem {

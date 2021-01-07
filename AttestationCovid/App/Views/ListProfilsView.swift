@@ -19,7 +19,7 @@ enum ListProfilsAction: Equatable {
     case edit(Profil)
 }
 
-let ListProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { state, action, _ in
+let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { state, action, _ in
     switch action {
     case .add(let profil):
         state.profils.append(profil)
@@ -32,18 +32,23 @@ let ListProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
 }
 
 struct ListProfilsView: View {
+    let store: Store<ListProfilsState, ListProfilsAction>
+
     @EnvironmentObject var appRouting: AppRouting
     @EnvironmentObject var profilLocalData: ProfilLocalData
     @State private var editMode = EditMode.inactive
     @State private var profils = [Profil]()
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(profils.indices, id: \.self) { indice in
-                    HStack {
-                        Spacer()
-                            NavigationLink(destination : ProfilDetailView(user: $profils[indice])) {
-                                Text(profils[indice].firstName)
+        WithViewStore(self.store) { viewStore in
+            NavigationView {
+                List {
+                    ForEach(viewStore.state.profils) { profil in
+                        HStack {
+                            Spacer()
+                            NavigationLink(destination : ProfilDetailView(user: profil)) {
+                                    Text(profil.firstName)
+                            }
+                            Spacer()
                         }
                         Spacer()
                     }
@@ -62,12 +67,14 @@ struct ListProfilsView: View {
     }
 
     private var addButton: some View {
+        WithViewStore(self.store) { viewStore -> AnyView in
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: onAdd2) { Image(systemName: "plus") })
+                return AnyView(Button(action: {onAdd2(viewStore: viewStore)}) { Image(systemName: "plus") })
             default:
                 return AnyView(EmptyView())
             }
+        }
     }
 
     func onAdd() {
@@ -77,10 +84,10 @@ struct ListProfilsView: View {
         profilLocalData.allUsers = profilLocalData.globalUsers
     }
 
-    func onAdd2() {
+    func onAdd2(viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
         var user = Profil()
         user.firstName = "Nouveau Profil"
-        profils.append(user)
+        viewStore.send(.add(user))
     }
 
     private func moveItem(from source: IndexSet, to destination: Int) {
