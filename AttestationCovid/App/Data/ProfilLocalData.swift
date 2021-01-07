@@ -13,12 +13,6 @@ public final class ProfilLocalData: ObservableObject {
 
     static var shared = ProfilLocalData()
 
-    private init() {
-        self.allUsers = globalUsers
-    }
-
-    @Published var allUsers: [Profil] = []
-
     public var globalUsers: [Profil] {
         get { Defaults[.users] }
         set { Defaults[.users] = newValue }
