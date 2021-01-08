@@ -61,7 +61,7 @@ struct MovingMotifFormView: View {
                             datesortie: Date(),
                             heuresortie: Date()
                         )
-                        generatePdf(profile: profilePDF, reasons: selectedRaisons, pdfBase: <#T##URL#>)
+//                        generatePdf(profile: profilePDF, reasons: selectedRaisons, pdfBase: <#T##URL#>)
                     }
                 }.padding()
                 Spacer()
