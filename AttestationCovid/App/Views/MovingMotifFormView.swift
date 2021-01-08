@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MovingMotifFormView: View {
     @EnvironmentObject var appRouting: AppRouting
-    @EnvironmentObject var profilLocalData: ProfilLocalData
-
+    let profilLocalData = ProfilLocalData.shared
     @State var raisons: [Raison] = []
+
     var body: some View {
         VStack{
             if profilLocalData.globalUsers.isEmpty {
@@ -19,6 +19,7 @@ struct MovingMotifFormView: View {
             } else if (appRouting.router == Router.main) {
                 VStack {
                     Text("Motif de déplacement")
+                        .font(.title)
                     Spacer()
                     List(raisons) { raison in
                         ChoiceButton(title: raison.code, isChecked: false)
@@ -28,6 +29,8 @@ struct MovingMotifFormView: View {
                 VStack {
                     Spacer()
                     Text("Profils disponnible")
+                        .font(.title)
+
                     List(profilLocalData.globalUsers, id: \.id) { user in
                         ChoiceButton(title: user.firstName , isChecked: false)
                     }
@@ -39,7 +42,6 @@ struct MovingMotifFormView: View {
                 Spacer()
             }
         }.onAppear {
-            appRouting.router = .main
             do {
                 let data = try Data(contentsOf: dataUrl)
                 raisons = try JSONDecoder().decode([Raison].self, from: data)
