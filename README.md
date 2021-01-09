@@ -5,6 +5,10 @@ certificate is needed to prove what was your raison to go out
 
 The idea was simple, the official online generating certificate had not the possibility to create multiple profils ( add all your infos name, birthday) and can only generate one pdf for one profil. This app add the possibility to create multiple profils and select them to generate certificate (in PDF) in a easy way. when all the profils are created, you have just to select the raison and the profils and you will get all the certificate.
 
+With that possibility you can go out with any one, like your parents or grand parents who are not experts with using smartphone or computer, this will speed up the process to create a certificate
+
+Here is an Example
+
 <img src="readmeAssets/images/example.png" alt="drawing" width="200"/>
 
 
