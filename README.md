@@ -30,11 +30,6 @@ learnings/improving :
 
 ## App Advancement
 
-### Right now the app is looking like this  (11 September 2020)
-<img src="readmeAssets/images/appAdvancement-home-11-10-2020.png" alt="drawing" width="200"/>
-<img src="readmeAssets/images/appAdvancement-info-11-10-2020.png" alt="drawing" width="200"/>
-
-
 ### 9 January 2021
 
 #### Home view
