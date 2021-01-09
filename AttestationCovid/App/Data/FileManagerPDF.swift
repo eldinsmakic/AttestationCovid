@@ -7,10 +7,46 @@
 
 import Foundation
 
-final class FileManagerPDF {
+public final class FileManagerPDF {
     public let url: URL
 
-    init() {
+    public static let shared = FileManagerPDF()
+
+    private init() {
         url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pdfs")
+
+        if !FileManager.default.fileExists(atPath: url.absoluteString) {
+            do {
+                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error.localizedDescription);
+            }
+        }
+    }
+
+    func add(pdfName: String, withData contents: Data) -> Bool {
+        let path = createURL(name: pdfName).absoluteString
+
+        return FileManager.default.createFile(atPath: path, contents: contents, attributes: nil)
+    }
+
+    func remove(pdfName: String) -> Bool {
+        let url = createURL(name: pdfName)
+        return FileManager.default.removeItem(at: url)
+    }
+
+    func getAllFilesURL() -> [URL] {
+        var result = [URL]()
+        do {
+            result = try FileManager.default.contentsOfDirectory(at: self.url, includingPropertiesForKeys: nil, options: [])
+        } catch let error {
+            print(error)
+        }
+
+        return result
+    }
+
+    private func createURL(name: String) -> URL {
+        return "\(url.absoluteString)/\(pdfName)"
     }
 }
