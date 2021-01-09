@@ -32,7 +32,14 @@ public final class FileManagerPDF {
 
     func remove(pdfName: String) -> Bool {
         let url = createURL(name: pdfName)
-        return FileManager.default.removeItem(at: url)
+
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+
+        return FileManager.default.fileExists(atPath: url.absoluteString)
     }
 
     func getAllFilesURL() -> [URL] {
@@ -47,6 +54,6 @@ public final class FileManagerPDF {
     }
 
     private func createURL(name: String) -> URL {
-        return "\(url.absoluteString)/\(pdfName)"
+        return url.appendingPathComponent(name)
     }
 }
