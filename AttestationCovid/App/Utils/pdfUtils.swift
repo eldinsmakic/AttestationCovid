@@ -23,7 +23,9 @@ let sizeFont = CGFloat(11.0)
 let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
 //let font = UIFont.systemFont(ofSize: 11)
 
-func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
+func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
+    let pdfBase = Bundle.main.url(forResource: "attestation", withExtension: "pdf", subdirectory: nil, localization: nil)!
+
     let dateFormater = DateFormatter()
     dateFormater.dateStyle = .short
     dateFormater.timeStyle = .short
@@ -104,11 +106,7 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF], pdfBase: URL) {
     page2.draw(image: generateQRCode(from: data), x: 50, y: size2!.height - 400, width: 300, height: 300)
     pdfDoc.insert(page2, at: 1)
 
-    do {
-        try pdfDoc.dataRepresentation()?.write(to: pdfBase)
-    } catch let error {
-        print(error.localizedDescription)
-    }
+    return pdfDoc.dataRepresentation()
 }
 
 
