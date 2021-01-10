@@ -1,5 +1,5 @@
 //
-//  UIActivityControllerView.swift
+//  UIActivityViewControllerView.swift
 //  AttestationCovid
 //
 //  Created by eldin smakic on 10/01/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-struct ActivityViewController: UIViewControllerRepresentable {
+struct ActivityViewControllerView: UIViewControllerRepresentable {
 
     var activityItems: [Any]
     var applicationActivities: [UIActivity]? = nil
