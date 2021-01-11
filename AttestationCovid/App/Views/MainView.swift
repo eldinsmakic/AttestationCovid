@@ -25,7 +25,6 @@ struct MainView: View {
 
             ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
                 .environmentObject(appRouting)
-                .environmentObject(profilLocalData)
                 .tabItem {
 //                    Image(systemName: appRouting.router == Router.profile ? "person.fill" : "person")
                     Image(systemName: "person")
