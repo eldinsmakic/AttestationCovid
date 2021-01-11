@@ -30,7 +30,7 @@
 		9918513625A9CF9900BC7FD3 /* app-advancement-list-profils.png in Resources */ = {isa = PBXBuildFile; fileRef = 9918513325A9CF9900BC7FD3 /* app-advancement-list-profils.png */; };
 		9918513B25A9D6BC00BC7FD3 /* FileManagerPDFTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9918513A25A9D6BC00BC7FD3 /* FileManagerPDFTest.swift */; };
 		9918514325A9D77600BC7FD3 /* FileManagerPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9918514225A9D77600BC7FD3 /* FileManagerPDF.swift */; };
-		992F521F25AB906800716AA3 /* UIActivityControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F521E25AB906800716AA3 /* UIActivityControllerView.swift */; };
+		992F521F25AB906800716AA3 /* UIActivityViewControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992F521E25AB906800716AA3 /* UIActivityViewControllerView.swift */; };
 		9933952A25A3BD8C003E4F52 /* ListPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933952925A3BD8C003E4F52 /* ListPDFView.swift */; };
 		9933952F25A3D4FC003E4F52 /* FormData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9933952E25A3D4FC003E4F52 /* FormData.json */; };
 		9933953425A3D560003E4F52 /* Raison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933953325A3D560003E4F52 /* Raison.swift */; };
