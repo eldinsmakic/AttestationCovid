@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct ProfilChoice {
     let profil: Profil
@@ -15,6 +16,27 @@ struct ProfilChoice {
 struct RaisonChoice {
     let raison: Raison
     var isChecked = false
+}
+
+struct RaisonState {
+    var raisonsChoices = [RaisonChoice]()
+}
+
+enum RaisonAction {
+    case changeRaison(RaisonChoice)
+}
+
+let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ in
+
+    switch (action) {
+    case .changeRaison(let newRaison):
+        for i in 0..<state.raisonsChoices.count {
+            if state.raisonsChoices[i].raison.id == newRaison.raison.id {
+                state.raisonsChoices[i].isChecked.toggle()
+            }
+        }
+    }
+    return .none
 }
 
 struct MovingMotifFormView: View {
