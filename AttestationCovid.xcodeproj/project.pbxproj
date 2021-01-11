@@ -110,7 +110,7 @@
 		9918513325A9CF9900BC7FD3 /* app-advancement-list-profils.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-advancement-list-profils.png"; sourceTree = "<group>"; };
 		9918513A25A9D6BC00BC7FD3 /* FileManagerPDFTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPDFTest.swift; sourceTree = "<group>"; };
 		9918514225A9D77600BC7FD3 /* FileManagerPDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPDF.swift; sourceTree = "<group>"; };
-		992F521E25AB906800716AA3 /* UIActivityControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityControllerView.swift; sourceTree = "<group>"; };
+		992F521E25AB906800716AA3 /* UIActivityViewControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityViewControllerView.swift; sourceTree = "<group>"; };
 		9933952925A3BD8C003E4F52 /* ListPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDFView.swift; sourceTree = "<group>"; };
 		9933952E25A3D4FC003E4F52 /* FormData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FormData.json; sourceTree = "<group>"; };
 		9933953325A3D560003E4F52 /* Raison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raison.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 			children = (
 				9916A562255F207B003FFCD2 /* ProfilLocalData.swift */,
 				9918514225A9D77600BC7FD3 /* FileManagerPDF.swift */,
-				992F521E25AB906800716AA3 /* UIActivityControllerView.swift */,
+				992F521E25AB906800716AA3 /* UIActivityViewControllerView.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */,
-				992F521F25AB906800716AA3 /* UIActivityControllerView.swift in Sources */,
+				992F521F25AB906800716AA3 /* UIActivityViewControllerView.swift in Sources */,
 				9986BEC62596730100F1F98A /* ProfilePDF.swift in Sources */,
 				9916A563255F207B003FFCD2 /* ProfilLocalData.swift in Sources */,
 				9916A570255F2E29003FFCD2 /* MovingMotifFormView.swift in Sources */,
