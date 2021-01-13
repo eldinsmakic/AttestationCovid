@@ -9,14 +9,12 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var appRouting: AppRouting
-    @EnvironmentObject var profilLocalData: ProfilLocalData
-    
+
     var body: some View {
         TabView(selection: $appRouting.router) {
 //            PdfView()
             MovingMotifFormView()
                 .environmentObject(appRouting)
-                .environmentObject(profilLocalData)
                 .tabItem {
 //                    Image(systemName: appRouting.router == Router.main  ? "house.fill" : "house")
                     Image(systemName: "house")
@@ -46,11 +44,9 @@ struct MainView_Previews: PreviewProvider {
         Group {
             MainView()
                 .environmentObject(AppRouting())
-                .environmentObject(ProfilLocalData.shared)
             MainView()
                 .preferredColorScheme(.dark)
                 .environmentObject(AppRouting())
-                .environmentObject(ProfilLocalData.shared)
         }
     }
 }
