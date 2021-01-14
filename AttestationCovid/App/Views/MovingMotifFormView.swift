@@ -72,7 +72,7 @@ struct MovingMotifFormView: View {
                 }
                 VStack {
                     Spacer()
-                    Text("Profils disponnible")
+                    Text("Profils disponible")
                         .font(.title)
 
                     List(profilsChoices, id: \.profil.id) { user in
