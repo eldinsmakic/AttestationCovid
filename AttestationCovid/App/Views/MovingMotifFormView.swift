@@ -20,10 +20,12 @@ struct RaisonChoice {
 
 struct RaisonState {
     var raisonsChoices = [RaisonChoice]()
+    var profilsChoices = [ProfilChoice]()
 }
 
 enum RaisonAction {
     case changeRaison(RaisonChoice)
+    case changeProfil(ProfilChoice)
 }
 
 let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ in
@@ -35,15 +37,25 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
                 state.raisonsChoices[i].isChecked.toggle()
             }
         }
+    case .changeProfil(let newProfil):
+        for i in 0..<state.profilsChoices.count {
+            if state.profilsChoices[i].profil.id == newProfil.profil.id {
+                state.profilsChoices[i].isChecked.toggle()
+            }
+        }
     }
     return .none
 }
 
 struct MovingMotifFormView: View {
+
     @EnvironmentObject var appRouting: AppRouting
     let profilLocalData = ProfilLocalData.shared
     @State var raisonsChoices: [RaisonChoice] = []
     @State var profilsChoices = [ProfilChoice]()
+    @State var isSharePresented: Bool = false
+    @State var data: Data?
+
     var body: some View {
         VStack{
             if profilLocalData.globalUsers.isEmpty {
@@ -68,27 +80,17 @@ struct MovingMotifFormView: View {
                     }
                 }
                 Spacer()
-                Button("Valider") {
-                    let selectedPorfil = profilsChoices.filter({ $0.isChecked })
-                    let selectedRaisons = raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
-                    selectedPorfil.forEach { profile in
-                    let profilePDF = ProfilePDF(
-                            lastname: profile.profil.lastName,
-                            firstname: profile.profil.firstName,
-                            birthday: profile.profil.birthday,
-                            placeofbirth: profile.profil.birthPlace,
-                            address: profile.profil.address,
-                            zipcode: profile.profil.zipcode,
-                            city: profile.profil.locality,
-                            datesortie: Date(),
-                            heuresortie: Date()
-                        )
-//                        generatePdf(profile: profilePDF, reasons: selectedRaisons, pdfBase: <#T##URL#>)
-                    }
-                }.padding()
+                Button("Valider", action: {
+                    createPDfAndShowIt()
+                }).sheet(isPresented: $isSharePresented, onDismiss: {
+                    self.isSharePresented = false
+                }, content: {
+                    ActivityViewControllerView(activityItems: [self.data!])
+                })
                 Spacer()
             }
-        }.onAppear {
+        }
+        .onAppear {
             do {
                 let data = try Data(contentsOf: dataUrl)
                 let raisons = try JSONDecoder().decode([Raison].self, from: data)
@@ -97,6 +99,26 @@ struct MovingMotifFormView: View {
             } catch let error {
                 print(error)
             }
+        }
+    }
+
+    func createPDfAndShowIt() {
+        let selectedPorfil = profilsChoices.filter({ $0.isChecked })
+        let selectedRaisons = raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
+        selectedPorfil.forEach { profile in
+        let profilePDF = ProfilePDF(
+                lastname: profile.profil.lastName,
+                firstname: profile.profil.firstName,
+                birthday: profile.profil.birthday,
+                placeofbirth: profile.profil.birthPlace,
+                address: profile.profil.address,
+                zipcode: profile.profil.zipcode,
+                city: profile.profil.locality,
+                datesortie: Date(),
+                heuresortie: Date()
+            )
+            self.data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
+            self.isSharePresented = true
         }
     }
 }
