@@ -11,25 +11,20 @@ struct ChoiceButton: View {
     var title: String
     @State var isChecked = false
     var body: some View {
-        Button(action: {
-            isChecked.toggle()
-        }) {
-            HStack {
-                if isChecked {
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: 50, height: 50)
-                } else {
-                    Rectangle()
-                        .stroke(Color.blue)
-                        .frame(width: 50, height: 50)
-                }
-                Text(title)
-                    .font(.title2)
-                    .padding()
+        HStack {
+            if isChecked {
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: 50, height: 50)
+            } else {
+                Rectangle()
+                    .stroke(Color.blue)
+                    .frame(width: 50, height: 50)
             }
+            Text(title)
+                .font(.title2)
+                .padding()
         }
-
     }
 }
 
