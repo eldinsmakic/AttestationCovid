@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Raison: Codable, Identifiable {
+struct Raison: Codable, Identifiable, Equatable {
     let code: String
     let label: String
 
