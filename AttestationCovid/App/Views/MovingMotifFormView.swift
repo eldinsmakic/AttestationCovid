@@ -8,22 +8,24 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ProfilChoice {
+struct ProfilChoice: Equatable {
     let profil: Profil
     var isChecked = false
 }
 
-struct RaisonChoice {
+struct RaisonChoice: Equatable {
     let raison: Raison
     var isChecked = false
 }
 
-struct RaisonState {
+struct RaisonState: Equatable {
     var raisonsChoices = [RaisonChoice]()
     var profilsChoices = [ProfilChoice]()
 }
 
 enum RaisonAction {
+    case loadRaisons([RaisonChoice])
+    case loadProfils([ProfilChoice])
     case changeRaison(RaisonChoice)
     case changeProfil(ProfilChoice)
 }
@@ -43,6 +45,10 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
                 state.profilsChoices[i].isChecked.toggle()
             }
         }
+    case .loadRaisons(let raisons):
+        state.raisonsChoices = raisons
+    case .loadProfils(let profils):
+        state.profilsChoices = profils
     }
     return .none
 }
@@ -51,60 +57,73 @@ struct MovingMotifFormView: View {
 
     @EnvironmentObject var appRouting: AppRouting
     let profilLocalData = ProfilLocalData.shared
-    @State var raisonsChoices: [RaisonChoice] = []
-    @State var profilsChoices = [ProfilChoice]()
+    let store: Store<RaisonState,RaisonAction>
+
     @State var isSharePresented: Bool = false
-    @State var data: Data?
+    @State var data: Data? = nil
 
     var body: some View {
-        VStack{
-            if profilLocalData.globalUsers.isEmpty {
-                Text("Vous devez créer un profil")
-            } else if (appRouting.router == Router.main) {
-                VStack {
-                    Text("Motif de déplacement")
-                        .font(.title)
-                    Spacer()
-                    List(raisonsChoices, id: \.raison.id) { raisonChoice in
-                        ChoiceButton(title: raisonChoice.raison.code, isChecked: raisonChoice.isChecked)
+        WithViewStore(self.store) { viewStore in
+            VStack{
+                if profilLocalData.globalUsers.isEmpty {
+                    Text("Vous devez créer un profil")
+                } else if (appRouting.router == Router.main) {
+                    VStack {
+                        Text("Motif de déplacement")
+                            .font(.title)
+                        Spacer()
+                        List(viewStore.raisonsChoices, id: \.raison.id) { raisonChoice in
+                            Button(action: {
+                                    viewStore.send(.changeRaison(raisonChoice))
+                            }, label: {
+                            ChoiceButton(title: raisonChoice.raison.code, isChecked: raisonChoice.isChecked)
+                            })
+                        }
+                        Spacer()
+                    }
+                    VStack {
+                        Spacer()
+                        Text("Profils disponible")
+                            .font(.title)
+                        List(viewStore.profilsChoices, id: \.profil.id) { user in
+                            Button(action: {
+                                viewStore.send(.changeProfil(user))
+                            }, label: {
+                                ChoiceButton(title: user.profil.firstName , isChecked: user.isChecked)
+                            })
+                        }
                     }
                     Spacer()
-                }
-                VStack {
+                    Button("Valider", action: {
+                        createPDfAndShowIt(viewStore: viewStore)
+                    }).sheet(isPresented: $isSharePresented, onDismiss: {
+                        self.isSharePresented = false
+                    }, content: {
+                        ActivityViewControllerView(activityItems: [self.data!])
+                    })
                     Spacer()
-                    Text("Profils disponible")
-                        .font(.title)
-
-                    List(profilsChoices, id: \.profil.id) { user in
-                        ChoiceButton(title: user.profil.firstName , isChecked: user.isChecked)
-                    }
                 }
-                Spacer()
-                Button("Valider", action: {
-                    createPDfAndShowIt()
-                }).sheet(isPresented: $isSharePresented, onDismiss: {
-                    self.isSharePresented = false
-                }, content: {
-                    ActivityViewControllerView(activityItems: [self.data!])
-                })
-                Spacer()
             }
-        }
-        .onAppear {
-            do {
-                let data = try Data(contentsOf: dataUrl)
-                let raisons = try JSONDecoder().decode([Raison].self, from: data)
-                raisonsChoices = raisons.map({ RaisonChoice(raison: $0) })
-                profilsChoices = profilLocalData.globalUsers.map({ ProfilChoice(profil: $0) })
-            } catch let error {
-                print(error)
+            .onAppear {
+
             }
         }
     }
 
-    func createPDfAndShowIt() {
-        let selectedPorfil = profilsChoices.filter({ $0.isChecked })
-        let selectedRaisons = raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
+    func fetchRaisonOnAppear(viewStore: ViewStore<RaisonState, RaisonAction>) {
+        do {
+            let data = try Data(contentsOf: dataUrl)
+            let raisons = try JSONDecoder().decode([Raison].self, from: data)
+            viewStore.send(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) })))
+            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0) })))
+        } catch let error {
+            print(error)
+        }
+    }
+
+    func createPDfAndShowIt(viewStore: ViewStore<RaisonState, RaisonAction>) {
+        let selectedPorfil = viewStore.profilsChoices.filter({ $0.isChecked })
+        let selectedRaisons = viewStore.raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
         selectedPorfil.forEach { profile in
         let profilePDF = ProfilePDF(
                 lastname: profile.profil.lastName,
@@ -125,7 +144,7 @@ struct MovingMotifFormView: View {
 
 struct MovingMotifFormView_Previews: PreviewProvider {
     static var previews: some View {
-        MovingMotifFormView()
+        MovingMotifFormView(store: .init(initialState: .init() , reducer: raisonReducer, environment: ()) )
             .environmentObject(AppRouting())
             .environmentObject(ProfilLocalData.shared)
     }
