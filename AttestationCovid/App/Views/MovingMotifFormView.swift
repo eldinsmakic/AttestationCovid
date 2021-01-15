@@ -105,7 +105,7 @@ struct MovingMotifFormView: View {
                 }
             }
             .onAppear {
-
+                fetchRaisonOnAppear(viewStore: viewStore)
             }
         }
     }
