@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct Raison: Codable, Identifiable, Equatable {
+struct Raison: Codable, Equatable {
     let code: String
     let label: String
 
-    var id: UUID {
-        UUID()
+    var id = UUID()
+
+    private enum CodingKeys : String, CodingKey {
+            case code, label
     }
 }
 
