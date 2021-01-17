@@ -13,7 +13,7 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $appRouting.router) {
 //            PdfView()
-            MovingMotifFormView()
+            MovingMotifFormView(store: .init(initialState: .init(), reducer: raisonReducer, environment: ()))
                 .environmentObject(appRouting)
                 .tabItem {
 //                    Image(systemName: appRouting.router == Router.main  ? "house.fill" : "house")
