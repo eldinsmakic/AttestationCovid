@@ -33,10 +33,10 @@ enum RaisonAction {
 let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ in
 
     switch (action) {
-    case .changeRaison(let newRaison):
+    case .changeRaison(let raisonChoice):
         for i in 0..<state.raisonsChoices.count {
-            if state.raisonsChoices[i].raison.id == newRaison.raison.id {
-                state.raisonsChoices[i].isChecked.toggle()
+            if state.raisonsChoices[i].raison.id == raisonChoice.raison.id {
+                state.raisonsChoices[i] = raisonChoice
             }
         }
     case .changeProfil(let newProfil):
@@ -73,11 +73,7 @@ struct MovingMotifFormView: View {
                             .font(.title)
                         Spacer()
                         List(viewStore.raisonsChoices, id: \.raison.id) { raisonChoice in
-                            Button(action: {
-                                    viewStore.send(.changeRaison(raisonChoice))
-                            }, label: {
-                            ChoiceButton(title: raisonChoice.raison.code, isChecked: raisonChoice.isChecked)
-                            })
+                            ChoiceButtonRaison(store: self.store, raisonChoice: raisonChoice)
                         }
                         Spacer()
                     }
