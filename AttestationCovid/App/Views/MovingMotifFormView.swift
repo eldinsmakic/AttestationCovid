@@ -42,7 +42,7 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
     case .changeProfil(let newProfil):
         for i in 0..<state.profilsChoices.count {
             if state.profilsChoices[i].profil.id == newProfil.profil.id {
-                state.profilsChoices[i].isChecked.toggle()
+                state.profilsChoices[i] = newProfil
             }
         }
     case .loadRaisons(let raisons):
@@ -82,11 +82,7 @@ struct MovingMotifFormView: View {
                         Text("Profils disponible")
                             .font(.title)
                         List(viewStore.profilsChoices, id: \.profil.id) { user in
-                            Button(action: {
-                                viewStore.send(.changeProfil(user))
-                            }, label: {
-                                ChoiceButton(title: user.profil.firstName , isChecked: user.isChecked)
-                            })
+                            ChoiceButtonProfil(store: self.store, profilChoice: user)
                         }
                     }
                     Spacer()
