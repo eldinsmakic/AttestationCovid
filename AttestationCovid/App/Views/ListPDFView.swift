@@ -18,7 +18,7 @@ struct ListPDFView: View {
                     Text("Aucune attestations pour l'instant")
                 } else {
                     List(directoryContents, id: \.self ) { file in
-                        NavigationLink(file.lastPathComponent, destination: PdfView())
+                        NavigationLink(file.lastPathComponent, destination: PdfViewToSwifUI(url: file))
                     }
                 }
             }.onAppear {
