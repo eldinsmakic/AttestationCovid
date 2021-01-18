@@ -39,8 +39,8 @@ public final class FileManagerPDF {
         return FileManager.default.createFile(atPath: path.path, contents: contents, attributes: nil)
     }
 
-    func remove(pdfName: String) -> Bool {
-        let url = createURL(name: pdfName)
+    func remove(url: URL) -> Bool {
+//        let url = createURL(name: pdfName)
 
         do {
             try FileManager.default.removeItem(at: url)

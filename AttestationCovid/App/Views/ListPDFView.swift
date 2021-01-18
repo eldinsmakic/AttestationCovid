@@ -17,14 +17,24 @@ struct ListPDFView: View {
                 if directoryContents.isEmpty {
                     Text("Aucune attestations pour l'instant")
                 } else {
-                    List(directoryContents, id: \.self ) { file in
-                        NavigationLink(file.lastPathComponent, destination: PdfViewToSwifUI(url: file))
+                    List {
+                        ForEach(directoryContents, id: \.self ) { file in
+                            NavigationLink(file.lastPathComponent, destination: PdfViewToSwifUI(url: file))
+                        }.onDelete(perform: onDelete)
                     }
                 }
             }.onAppear {
                 directoryContents = fileManagerPDF.getAllFilesURL()
                 print(directoryContents)
             }
+        }
+    }
+
+    func onDelete(indexSet index: IndexSet) {
+        index.forEach { fileIndex in
+            let file = directoryContents[fileIndex]
+            directoryContents.remove(atOffsets: index)
+            fileManagerPDF.remove(url: file)
         }
     }
 }
