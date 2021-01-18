@@ -60,7 +60,11 @@ struct MovingMotifFormView: View {
     let store: Store<RaisonState,RaisonAction>
 
     @State var isSharePresented: Bool = false
-    @State var data: Data? = nil
+    @State var data: Data? = nil {
+        didSet {
+            self.isSharePresented = true
+        }
+    }
 
     var body: some View {
         WithViewStore(self.store) { viewStore in
@@ -88,10 +92,6 @@ struct MovingMotifFormView: View {
                     Spacer()
                     Button("Valider", action: {
                         createPDfAndShowIt(viewStore: viewStore)
-                    }).sheet(isPresented: $isSharePresented, onDismiss: {
-                        self.isSharePresented = false
-                    }, content: {
-                        ActivityViewControllerView(activityItems: [self.data!])
                     })
 //                    .sheet(isPresented: $isSharePresented, onDismiss: {
 //                        self.isSharePresented = false
@@ -133,6 +133,7 @@ struct MovingMotifFormView: View {
                 datesortie: Date(),
                 heuresortie: Date()
             )
+
             self.data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
             let fileManager = FileManagerPDF.shared
             let date = Date().getDateAndHour()
