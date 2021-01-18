@@ -11,14 +11,26 @@ public extension Date {
 
     func getHours() -> String {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "hh:mm"
+        dateFormater.dateFormat = "HH:mm"
+        dateFormater.timeZone = TimeZone.current
 
         return dateFormater.string(from: self)
     }
 
     func getDate() -> String {
         let dateFormater = DateFormatter()
+
         dateFormater.dateFormat = "MM/dd/yyyy"
+        dateFormater.timeZone = TimeZone.current
+
+        return dateFormater.string(from: self)
+    }
+
+    func getDateAndHour() -> String {
+        let dateFormater = DateFormatter()
+
+        dateFormater.dateFormat = "HH:mm_dd_MM"
+        dateFormater.timeZone = TimeZone.current
 
         return dateFormater.string(from: self)
     }
