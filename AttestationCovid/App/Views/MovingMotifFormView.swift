@@ -135,8 +135,10 @@ struct MovingMotifFormView: View {
             )
             self.data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
             let fileManager = FileManagerPDF.shared
-            fileManager.add(pdfName: "\(profile.profil.firstName).\(Date())", withData: self.data!)
-            print(fileManager.getAllFilesURL())
+            let date = Date().getDateAndHour()
+
+            let fileName =  "\(profile.profil.firstName)_\(selectedRaisons[0])_\(date)"
+            let result = fileManager.add(pdfName: fileName, withData: self.data)
         }
     }
 }
