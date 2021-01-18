@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-
-let url_pdf_file = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pdfs")
-
-var directoryContents = [URL]()
-
 struct ListPDFView: View {
+    let fileManagerPDF = FileManagerPDF.shared
+    @State var directoryContents = [URL]()
+
     var body: some View {
         NavigationView {
             VStack {
@@ -23,17 +21,9 @@ struct ListPDFView: View {
                         NavigationLink(file.lastPathComponent, destination: PdfView())
                     }
                 }
-            }
-        }.onAppear {
-            if !FileManager.default.fileExists(atPath: url_pdf_file.absoluteString) {
-                do {
-                    try FileManager.default.createDirectory(at: url_pdf_file, withIntermediateDirectories: true, attributes: nil)
-
-                    directoryContents = try FileManager.default.contentsOfDirectory(at: url_pdf_file, includingPropertiesForKeys: nil, options: [])
-                    print(directoryContents)
-                } catch {
-                    print(error.localizedDescription);
-                }
+            }.onAppear {
+                directoryContents = fileManagerPDF.getAllFilesURL()
+                print(directoryContents)
             }
         }
     }
