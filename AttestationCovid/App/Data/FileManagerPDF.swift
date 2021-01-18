@@ -13,21 +13,33 @@ public final class FileManagerPDF {
     public static let shared = FileManagerPDF()
 
     private init() {
-        url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pdfs")
+        url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pdfs", isDirectory: true)
+        print("HHH \(url)")
+        if !FileManager.default.fileExists(atPath: url.path) {
+            do {
+//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
+            } catch let error {
+                print(error.localizedDescription);
+            }
+        }
+    }
 
+    func isDirectory() {
         if !FileManager.default.fileExists(atPath: url.absoluteString) {
             do {
-                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print(error.localizedDescription);
             }
         }
     }
 
-    func add(pdfName: String, withData contents: Data) -> Bool {
-        let path = createURL(name: pdfName).absoluteString
+    func add(pdfName: String, withData contents: Data?) -> Bool {
+        let path = createURL(name: pdfName)
 
-        return FileManager.default.createFile(atPath: path, contents: contents, attributes: nil)
+        return FileManager.default.createFile(atPath: path.path, contents: contents, attributes: nil)
     }
 
     func remove(pdfName: String) -> Bool {
