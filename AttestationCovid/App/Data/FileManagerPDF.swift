@@ -14,10 +14,8 @@ public final class FileManagerPDF {
 
     private init() {
         url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("pdfs", isDirectory: true)
-        print("HHH \(url)")
         if !FileManager.default.fileExists(atPath: url.path) {
             do {
-//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
                 try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
             } catch let error {
                 print(error.localizedDescription);
@@ -28,7 +26,6 @@ public final class FileManagerPDF {
     func isDirectory() {
         if !FileManager.default.fileExists(atPath: url.absoluteString) {
             do {
-//                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
                 try FileManager.default.createDirectory(atPath: url.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print(error.localizedDescription);
