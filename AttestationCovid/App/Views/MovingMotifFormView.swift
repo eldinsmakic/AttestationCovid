@@ -57,7 +57,7 @@ struct MovingMotifFormView: View {
 
     @EnvironmentObject var appRouting: AppRouting
     let profilLocalData = ProfilLocalData.shared
-    let store: Store<RaisonState,RaisonAction>
+    @State var store: Store<RaisonState,RaisonAction>
 
     @State var isSharePresented: Bool = false
     @State var data: Data? = nil {
@@ -76,8 +76,10 @@ struct MovingMotifFormView: View {
                         Text("Motif de déplacement")
                             .font(.title)
                         Spacer()
-                        List(viewStore.raisonsChoices, id: \.raison.id) { raisonChoice in
-                            ChoiceButtonRaison(store: self.store, raisonChoice: raisonChoice)
+                        List{
+                            ForEach(viewStore.raisonsChoices, id: \.raison.id) { raisonChoice in
+                                ChoiceButtonRaison(store: self.store, raisonChoice: raisonChoice)
+                            }
                         }
                         Spacer()
                     }
@@ -85,8 +87,10 @@ struct MovingMotifFormView: View {
                         Spacer()
                         Text("Profils disponible")
                             .font(.title)
-                        List(viewStore.profilsChoices, id: \.profil.id) { user in
-                            ChoiceButtonProfil(store: self.store, profilChoice: user)
+                        List {
+                            ForEach(viewStore.profilsChoices, id: \.profil.id) { user in
+                                ChoiceButtonProfil(store: self.store, profilChoice: user)
+                            }
                         }
                     }
                     Spacer()
@@ -102,6 +106,7 @@ struct MovingMotifFormView: View {
                 }
             }
             .onAppear {
+                print("HEELO")
                 fetchRaisonOnAppear(viewStore: viewStore)
             }
         }
@@ -112,7 +117,11 @@ struct MovingMotifFormView: View {
             let data = try Data(contentsOf: dataUrl)
             let raisons = try JSONDecoder().decode([Raison].self, from: data)
             viewStore.send(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) })))
-            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0) })))
+            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)})))
+
+            print(viewStore.raisonsChoices)
+            print(viewStore.profilsChoices)
+            print("holla")
         } catch let error {
             print(error)
         }
