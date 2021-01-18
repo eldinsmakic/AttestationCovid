@@ -93,6 +93,11 @@ struct MovingMotifFormView: View {
                     }, content: {
                         ActivityViewControllerView(activityItems: [self.data!])
                     })
+//                    .sheet(isPresented: $isSharePresented, onDismiss: {
+//                        self.isSharePresented = false
+//                    }, content: {
+//                        ActivityViewControllerView(activityItems: [self.data])
+//                    })
                     Spacer()
                 }
             }
