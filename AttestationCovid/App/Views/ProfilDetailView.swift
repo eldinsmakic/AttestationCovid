@@ -76,6 +76,17 @@ struct ProfilDetailView: View {
                         )
                     )
 
+                    TitleTextField(title: "Addresse")
+                    TextField(
+                        "Lille",
+                        text: Binding(
+                            get: { user.address },
+                            set: { user.address = $0
+                                  viewStore.send(.edit(user))
+                            }
+                        )
+                    )
+
                     TitleTextField(title: "Code Postal")
                     TextField(
                         "59370",
