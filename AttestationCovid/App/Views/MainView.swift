@@ -29,6 +29,7 @@ let routerReducer = Reducer<RouterState, RouterAction, Void> {
 struct MainView: View {
 
     @State var store: Store<AppState, AppAction>
+    var raisons: [Raison]
 
     var body: some View {
         WithViewStore(
@@ -40,7 +41,8 @@ struct MainView: View {
                 get: \.currentTabView,
                         send: {.router(.changeTabView($0))}
             )) {
-                MovingMotifFormView(store: self.store)
+
+                MovingMotifFormView(store: self.store, raisons: raisons)
                     .tabItem {
                         Image(systemName: viewStore.state.currentTabView == 0 ? "house.fill" : "house")
                         Text("Home")

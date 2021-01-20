@@ -36,9 +36,23 @@ let appReducer = Reducer<AppState, AppAction, Void>.combine(Reducer<AppState, Ap
 
 @main
 struct AttestationCovidApp: App {
+    let store: Store<AppState,AppAction> = .init(initialState: .init(routerState: .init(), raisonState: .init()), reducer: appReducer, environment: ())
+
+    var raisons: [Raison] = []
+
+    init() {
+        do {
+            let data = try Data(contentsOf: dataUrl)
+            self.raisons = try JSONDecoder().decode([Raison].self, from: data)
+
+        } catch let error {
+            print(error)
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            MainView(store: .init(initialState: .init(routerState: .init(), raisonState: .init()), reducer: appReducer, environment: ()))
+            MainView(store: self.store, raisons: raisons)
         }
     }
 }

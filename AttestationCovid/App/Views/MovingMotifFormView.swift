@@ -65,6 +65,8 @@ struct MovingMotifFormView: View {
         }
     }
 
+    @State var raisons: [Raison]
+
     var body: some View {
         WithViewStore(self.store) { viewStore in
             VStack{
@@ -123,15 +125,8 @@ struct MovingMotifFormView: View {
     }
 
     func fetchRaisonOnAppear(viewStore: ViewStore<AppState, AppAction>) {
-        do {
-            let data = try Data(contentsOf: dataUrl)
-            let raisons = try JSONDecoder().decode([Raison].self, from: data)
-
-            viewStore.send(.raison(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) }))))
-            viewStore.send(.raison(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)}))))
-        } catch let error {
-            print(error)
-        }
+        viewStore.send(.raison(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) }))))
+        viewStore.send(.raison(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)}))))
     }
 
     func createPDfAndShowIt(viewStore: ViewStore<AppState, AppAction>) {
@@ -167,6 +162,6 @@ struct MovingMotifFormView: View {
 
 struct MovingMotifFormView_Previews: PreviewProvider {
     static var previews: some View {
-        MovingMotifFormView(store: .init(initialState: .init(routerState: .init(), raisonState: .init()), reducer: appReducer, environment: ()))
+        MovingMotifFormView(store: .init(initialState: .init(routerState: .init(), raisonState: .init()), reducer: appReducer, environment: ()), raisons: [])
     }
 }
