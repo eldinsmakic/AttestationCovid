@@ -154,8 +154,6 @@ struct MovingMotifFormView: View {
 
 struct MovingMotifFormView_Previews: PreviewProvider {
     static var previews: some View {
-        MovingMotifFormView(store: .init(initialState: .init() , reducer: raisonReducer, environment: ()) )
-            .environmentObject(AppRouting())
-            .environmentObject(ProfilLocalData.shared)
+        MovingMotifFormView(store: .init(initialState: .init() , reducer: raisonReducer, environment: ()))
     }
 }

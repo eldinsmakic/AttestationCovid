@@ -8,15 +8,15 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AppState: Equatable {
+struct RouterState: Equatable {
     var currentTabView = 0
 }
 
-enum AppAction: Equatable {
+enum RouterAction: Equatable {
     case changeTabView(Int)
 }
 
-let appReducer = Reducer<AppState, AppAction, Void> {
+let appReducer = Reducer<RouterState, RouterAction, Void> {
     state, action, _ in
     switch action {
     case .changeTabView(let number):
@@ -27,16 +27,14 @@ let appReducer = Reducer<AppState, AppAction, Void> {
 
 
 struct MainView: View {
-    @EnvironmentObject var appRouting: AppRouting
 
-    @State var store: Store<AppState,AppAction>
-    @State var etat = 0
+    @State var store: Store<RouterState, RouterAction>
 
     var body: some View {
         WithViewStore(self.store) { viewStore in
             TabView(selection: viewStore.binding(
                 get: \.currentTabView,
-                send: AppAction.changeTabView
+                send: RouterAction.changeTabView
             )) {
                 MovingMotifFormView(store: .init(initialState: .init(), reducer: raisonReducer, environment: ()))
                     .tabItem {
@@ -45,7 +43,6 @@ struct MainView: View {
                     }.tag(0)
 
                 ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
-                    .environmentObject(appRouting)
                     .tabItem {
                         Image(systemName: viewStore.state.currentTabView == 1 ? "person.fill" : "person")
                         Text("Profiles")
