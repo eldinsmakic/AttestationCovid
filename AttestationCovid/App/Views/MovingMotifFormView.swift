@@ -139,6 +139,7 @@ struct MovingMotifFormView: View {
         let selectedPorfil = viewStore.raisonState.profilsChoices.filter({ $0.isChecked })
         let selectedRaisons = viewStore.raisonState.raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
         selectedPorfil.forEach { profile in
+
         let profilePDF = ProfilePDF(
                 lastname: profile.profil.lastName,
                 firstname: profile.profil.firstName,
@@ -157,6 +158,7 @@ struct MovingMotifFormView: View {
 
             let fileName =  "\(profile.profil.firstName)_\(selectedRaisons[0])_\(date)"
             let result = fileManager.add(pdfName: fileName, withData: self.data)
+
             if result {
                 viewStore.send(.router(.changeTabView(2)))
             }
