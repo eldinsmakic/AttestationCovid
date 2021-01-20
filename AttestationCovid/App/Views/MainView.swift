@@ -16,7 +16,7 @@ enum RouterAction: Equatable {
     case changeTabView(Int)
 }
 
-let appReducer = Reducer<RouterState, RouterAction, Void> {
+let routerReducer = Reducer<RouterState, RouterAction, Void> {
     state, action, _ in
     switch action {
     case .changeTabView(let number):
