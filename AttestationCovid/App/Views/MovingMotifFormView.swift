@@ -104,13 +104,9 @@ struct MovingMotifFormView: View {
                         }
                     }
                     Spacer()
-                    WithViewStore(self.store.scope(
-                                    state: \.raisonState,
-                                    action: AppAction.raison)) { subViewStore in
                         Button("Valider", action: {
-                            createPDfAndShowIt(viewStore: subViewStore)
+                            createPDfAndShowIt(viewStore: viewStore)
                         })
-                    }
 
 //                    .sheet(isPresented: $isSharePresented, onDismiss: {
 //                        self.isSharePresented = false
@@ -128,23 +124,20 @@ struct MovingMotifFormView: View {
     }
 
     func fetchRaisonOnAppear(viewStore: ViewStore<AppState, AppAction>) {
-//        do {
-//            let data = try Data(contentsOf: dataUrl)
-//            let raisons = try JSONDecoder().decode([Raison].self, from: data)
-//            viewStore.send(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) })))
-//            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)})))
-//
-//            print(viewStore.raisonsChoices)
-//            print(viewStore.profilsChoices)
-//            print("holla")
-//        } catch let error {
-//            print(error)
-//        }
+        do {
+            let data = try Data(contentsOf: dataUrl)
+            let raisons = try JSONDecoder().decode([Raison].self, from: data)
+
+            viewStore.send(.raison(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) }))))
+            viewStore.send(.raison(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)}))))
+        } catch let error {
+            print(error)
+        }
     }
 
-    func createPDfAndShowIt(viewStore: ViewStore<RaisonState, RaisonAction>) {
-        let selectedPorfil = viewStore.profilsChoices.filter({ $0.isChecked })
-        let selectedRaisons = viewStore.raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
+    func createPDfAndShowIt(viewStore: ViewStore<AppState, AppAction>) {
+        let selectedPorfil = viewStore.raisonState.profilsChoices.filter({ $0.isChecked })
+        let selectedRaisons = viewStore.raisonState.raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
         selectedPorfil.forEach { profile in
         let profilePDF = ProfilePDF(
                 lastname: profile.profil.lastName,
@@ -164,6 +157,9 @@ struct MovingMotifFormView: View {
 
             let fileName =  "\(profile.profil.firstName)_\(selectedRaisons[0])_\(date)"
             let result = fileManager.add(pdfName: fileName, withData: self.data)
+            if result {
+                viewStore.send(.router(.changeTabView(2)))
+            }
         }
     }
 }
