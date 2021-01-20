@@ -25,7 +25,6 @@ struct ListPDFView: View {
                 }
             }.onAppear {
                 directoryContents = fileManagerPDF.getAllFilesURL()
-                print(directoryContents)
             }
         }
     }

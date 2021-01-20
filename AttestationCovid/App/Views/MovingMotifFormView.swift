@@ -117,7 +117,6 @@ struct MovingMotifFormView: View {
                 }
             }
             .onAppear {
-                print("HEELO")
                 fetchRaisonOnAppear(viewStore: viewStore)
             }
         }
