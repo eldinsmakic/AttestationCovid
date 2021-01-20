@@ -39,7 +39,6 @@ let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
 struct ListProfilsView: View {
     let store: Store<ListProfilsState, ListProfilsAction>
 
-    @EnvironmentObject var appRouting: AppRouting
     @State private var editMode = EditMode.inactive
 
     var body: some View {
@@ -101,6 +100,5 @@ struct ListUsersView_Previews: PreviewProvider {
 
     static var previews: some View {
         ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
-            .environmentObject(AppRouting())
     }
 }
