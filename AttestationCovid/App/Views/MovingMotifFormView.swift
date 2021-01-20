@@ -56,7 +56,7 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
 struct MovingMotifFormView: View {
 
     let profilLocalData = ProfilLocalData.shared
-    @State var store: Store<RaisonState,RaisonAction>
+    @State var store: Store<AppState,AppAction>
 
     @State var isSharePresented: Bool = false
     @State var data: Data? = nil {
@@ -76,8 +76,13 @@ struct MovingMotifFormView: View {
                             .font(.title)
                         Spacer()
                         List{
-                            ForEach(viewStore.raisonsChoices, id: \.raison.id) { raisonChoice in
-                                ChoiceButtonRaison(store: self.store, raisonChoice: raisonChoice)
+                            ForEach(viewStore.raisonState.raisonsChoices, id: \.raison.id) { raisonChoice in
+                                ChoiceButtonRaison(
+                                    store: self.store.scope(
+                                        state: \.raisonState,
+                                        action: AppAction.raison),
+                                   raisonChoice: raisonChoice
+                                )
                             }
                         }
                         Spacer()
@@ -87,15 +92,26 @@ struct MovingMotifFormView: View {
                         Text("Profils disponible")
                             .font(.title)
                         List {
-                            ForEach(viewStore.profilsChoices, id: \.profil.id) { user in
-                                ChoiceButtonProfil(store: self.store, profilChoice: user)
+                            ForEach(viewStore.raisonState.profilsChoices, id: \.profil.id) { user in
+                                ChoiceButtonProfil(
+                                    store: self.store.scope(
+                                        state: \.raisonState,
+                                        action: AppAction.raison
+                                    ),
+                                    profilChoice: user
+                                )
                             }
                         }
                     }
                     Spacer()
-                    Button("Valider", action: {
-                        createPDfAndShowIt(viewStore: viewStore)
-                    })
+                    WithViewStore(self.store.scope(
+                                    state: \.raisonState,
+                                    action: AppAction.raison)) { subViewStore in
+                        Button("Valider", action: {
+                            createPDfAndShowIt(viewStore: subViewStore)
+                        })
+                    }
+
 //                    .sheet(isPresented: $isSharePresented, onDismiss: {
 //                        self.isSharePresented = false
 //                    }, content: {
@@ -111,19 +127,19 @@ struct MovingMotifFormView: View {
         }
     }
 
-    func fetchRaisonOnAppear(viewStore: ViewStore<RaisonState, RaisonAction>) {
-        do {
-            let data = try Data(contentsOf: dataUrl)
-            let raisons = try JSONDecoder().decode([Raison].self, from: data)
-            viewStore.send(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) })))
-            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)})))
-
-            print(viewStore.raisonsChoices)
-            print(viewStore.profilsChoices)
-            print("holla")
-        } catch let error {
-            print(error)
-        }
+    func fetchRaisonOnAppear(viewStore: ViewStore<AppState, AppAction>) {
+//        do {
+//            let data = try Data(contentsOf: dataUrl)
+//            let raisons = try JSONDecoder().decode([Raison].self, from: data)
+//            viewStore.send(.loadRaisons(raisons.map({ RaisonChoice(raison: $0) })))
+//            viewStore.send(.loadProfils(profilLocalData.globalUsers.map({ ProfilChoice(profil: $0)})))
+//
+//            print(viewStore.raisonsChoices)
+//            print(viewStore.profilsChoices)
+//            print("holla")
+//        } catch let error {
+//            print(error)
+//        }
     }
 
     func createPDfAndShowIt(viewStore: ViewStore<RaisonState, RaisonAction>) {
@@ -154,6 +170,6 @@ struct MovingMotifFormView: View {
 
 struct MovingMotifFormView_Previews: PreviewProvider {
     static var previews: some View {
-        MovingMotifFormView(store: .init(initialState: .init() , reducer: raisonReducer, environment: ()))
+        MovingMotifFormView(store: .init(initialState: .init(routerState: .init(), raisonState: .init()), reducer: appReducer, environment: ()))
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AppState {
+struct AppState: Equatable {
     var routerState: RouterState
     var raisonState: RaisonState
 }

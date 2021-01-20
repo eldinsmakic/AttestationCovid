@@ -28,15 +28,19 @@ let routerReducer = Reducer<RouterState, RouterAction, Void> {
 
 struct MainView: View {
 
-    @State var store: Store<RouterState, RouterAction>
+    @State var store: Store<AppState, AppAction>
 
     var body: some View {
-        WithViewStore(self.store) { viewStore in
+        WithViewStore(
+            self.store.scope(
+                        state: \.routerState
+            )
+        ) { viewStore in
             TabView(selection: viewStore.binding(
                 get: \.currentTabView,
-                send: RouterAction.changeTabView
+                        send: {.router(.changeTabView($0))}
             )) {
-                MovingMotifFormView(store: .init(initialState: .init(), reducer: raisonReducer, environment: ()))
+                MovingMotifFormView(store: self.store)
                     .tabItem {
                         Image(systemName: viewStore.state.currentTabView == 0 ? "house.fill" : "house")
                         Text("Home")
