@@ -55,7 +55,6 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
 
 struct MovingMotifFormView: View {
 
-    @EnvironmentObject var appRouting: AppRouting
     let profilLocalData = ProfilLocalData.shared
     @State var store: Store<RaisonState,RaisonAction>
 
@@ -71,7 +70,7 @@ struct MovingMotifFormView: View {
             VStack{
                 if profilLocalData.globalUsers.isEmpty {
                     Text("Vous devez créer un profil")
-                } else if (appRouting.router == Router.main) {
+                } else {
                     VStack {
                         Text("Motif de déplacement")
                             .font(.title)
