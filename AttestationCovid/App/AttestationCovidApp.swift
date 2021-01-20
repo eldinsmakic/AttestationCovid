@@ -11,7 +11,7 @@ import SwiftUI
 struct AttestationCovidApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(store: .init(initialState: .init(), reducer: appReducer, environment: ()))
                 .environmentObject(AppRouting())
         }
     }
