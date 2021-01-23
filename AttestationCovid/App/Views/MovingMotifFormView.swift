@@ -28,6 +28,7 @@ enum RaisonAction {
     case loadProfils([ProfilChoice])
     case changeRaison(RaisonChoice)
     case changeProfil(ProfilChoice)
+    case resetCheck
 }
 
 let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ in
@@ -49,6 +50,14 @@ let raisonReducer = Reducer<RaisonState, RaisonAction, Void> { state, action, _ 
         state.raisonsChoices = raisons
     case .loadProfils(let profils):
         state.profilsChoices = profils
+    case .resetCheck:
+        for index in 0..<state.raisonsChoices.count {
+            state.raisonsChoices[index].isChecked = false
+        }
+
+        for index in 0..<state.profilsChoices.count {
+            state.profilsChoices[index].isChecked = false
+        }
     }
     return .none
 }
@@ -57,13 +66,6 @@ struct MovingMotifFormView: View {
 
     let profilLocalData = ProfilLocalData.shared
     @State var store: Store<AppState,AppAction>
-
-    @State var isSharePresented: Bool = false
-    @State var data: Data? = nil {
-        didSet {
-            self.isSharePresented = true
-        }
-    }
 
     @State var raisons: [Raison]
 
@@ -140,14 +142,15 @@ struct MovingMotifFormView: View {
                 heuresortie: Date()
             )
 
-            self.data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
+            let data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
             let fileManager = FileManagerPDF.shared
             let date = Date().getDateAndHour()
 
             let fileName =  "\(profile.profil.firstName)_\(selectedRaisons[0])_\(date)"
-            let result = fileManager.add(pdfName: fileName, withData: self.data)
+            let result = fileManager.add(pdfName: fileName, withData: data)
 
             if result {
+                viewStore.send(.raison(.resetCheck))
                 viewStore.send(.router(.changeTabView(2)))
             }
         }

@@ -34,6 +34,8 @@ struct ChoiceButtonRaison: View {
                         .padding()
                 }
             }
+        }.onAppear {
+            raisonChoice.isChecked = false
         }
     }
 }
