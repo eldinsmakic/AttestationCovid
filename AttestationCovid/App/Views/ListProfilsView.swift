@@ -17,6 +17,7 @@ enum ListProfilsAction: Equatable {
     case add(Profil)
     case remove(IndexSet)
     case edit(Profil)
+    case move(IndexSet, Int)
 }
 
 let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { state, action, _ in
@@ -31,6 +32,8 @@ let listProfilsReducer = Reducer<ListProfilsState, ListProfilsAction, Void> { st
         }
             return $0
         })
+    case .move(let source, let destination):
+        state.profils.move(fromOffsets: source, toOffset: destination)
     }
     ProfilLocalData.shared.globalUsers = state.profils
     return .none
@@ -54,7 +57,8 @@ struct ListProfilsView: View {
                             Spacer()
                         }
                     }
-//                    .onMove(perform: moveItem2)
+                    .onMove(perform: { source,destination in
+                        moveItem(from: source, to: destination, viewStore: viewStore)})
                     .onDelete(perform: {index in deleteItem(at: index, with: viewStore )})
 
                     Spacer()
@@ -83,13 +87,9 @@ struct ListProfilsView: View {
         viewStore.send(.add(user))
     }
 
-//    private func moveItem(from source: IndexSet, to destination: Int) {
-//        profilLocalData.globalUsers.move(fromOffsets: source, toOffset: destination)
-//    }
-
-//    private func moveItem2(from source: IndexSet, to destination: Int) {
-//        profils.move(fromOffsets: source, toOffset: destination)
-//    }
+    private func moveItem(from source: IndexSet, to destination: Int, viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
+        viewStore.send(.move(source,destination))
+    }
 
     private func deleteItem(at indexSet: IndexSet, with viewStore: ViewStore<ListProfilsState, ListProfilsAction>) {
         viewStore.send(.remove(indexSet))
