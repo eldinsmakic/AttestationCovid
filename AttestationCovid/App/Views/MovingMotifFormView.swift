@@ -109,12 +109,6 @@ struct MovingMotifFormView: View {
                         Button("Valider", action: {
                             createPDfAndShowIt(viewStore: viewStore)
                         })
-
-//                    .sheet(isPresented: $isSharePresented, onDismiss: {
-//                        self.isSharePresented = false
-//                    }, content: {
-//                        ActivityViewControllerView(activityItems: [self.data])
-//                    })
                     Spacer()
                 }
             }
