@@ -73,7 +73,7 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
     let page1 = pdfDoc.page(at: 0)!
 
     page1.draw(text: "\(firstname) \(lastname)", x: 119, y: 665)
-    page1.draw(text: "01/02/1994", x: 119, y: 645)
+    page1.draw(text: birthday.getDate(), x: 119, y: 645)
     page1.draw(text: placeofbirth, x: 312, y: 645)
     page1.draw(text: "\(address) \(zipcode) \(city)", x: 133, y: 625)
 

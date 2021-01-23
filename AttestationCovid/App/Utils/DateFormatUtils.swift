@@ -20,7 +20,7 @@ public extension Date {
     func getDate() -> String {
         let dateFormater = DateFormatter()
 
-        dateFormater.dateFormat = "MM/dd/yyyy"
+        dateFormater.dateFormat = "dd/MM/yyyy"
         dateFormater.timeZone = TimeZone.current
 
         return dateFormater.string(from: self)
