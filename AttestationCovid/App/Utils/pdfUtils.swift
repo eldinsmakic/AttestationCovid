@@ -85,15 +85,10 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
     page1.draw(text: profile.datesortie.getDate(), x: 91, y: 267)
     page1.draw(text: profile.heuresortie.getHours(), x: 312, y: 267)
 
-//    page1.draw(text: creationDate, x: 314, y: 189)
 
     page1.draw(text: "Date de création", x: 479, y: 130)
     page1.draw(text: "\(creationDate) à \(creationHour)", x: 470, y: 124)
 
-//    let qrTitle1 = "QR-code contenant les informations "
-//    let qrTitle2 = "de votre attestation numérique"
-//
-//    page1.draw(text: "\(qrTitle1) \n + \(qrTitle2)", x: 440, y: 230)
 
     let qrCode = generateQRCode(from: data)
     let bounds = pdfDoc.page(at: 0)?.bounds(for: PDFDisplayBox.mediaBox)
