@@ -104,6 +104,10 @@ struct ProfilDetailView: View {
 
                 }
             }.padding()
+        }.onAppear {
+            if user.firstName == "Nouveau Profil" {
+                user.firstName = ""
+            }
         }
     }
 }
