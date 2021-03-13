@@ -8,15 +8,15 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct RouterState: Equatable {
+public struct RouterState: Equatable {
     var currentTabView = 0
 }
 
-enum RouterAction: Equatable {
+public enum RouterAction: Equatable {
     case changeTabView(Int)
 }
 
-let routerReducer = Reducer<RouterState, RouterAction, Void> {
+public let routerReducer = Reducer<RouterState, RouterAction, Void> {
     state, action, _ in
     switch action {
     case .changeTabView(let number):
@@ -34,12 +34,12 @@ struct MainView: View {
     var body: some View {
         WithViewStore(
             self.store.scope(
-                        state: \.routerState
+                state: \.routerState
             )
         ) { viewStore in
             TabView(selection: viewStore.binding(
                 get: \.currentTabView,
-                        send: {.router(.changeTabView($0))}
+                send: {.router(.changeTabView($0))}
             )) {
                 MovingMotifFormView(store: self.store, raisons: raisons)
                     .tabItem {

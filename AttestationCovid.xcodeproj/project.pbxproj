@@ -48,6 +48,8 @@
 		99C8C59925FD3AC700F2FBDA /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C59825FD3AC700F2FBDA /* TitleTextFieldView.swift */; };
 		99C8C59D25FD49ED00F2FBDA /* ListProfilsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C59C25FD49ED00F2FBDA /* ListProfilsReducer.swift */; };
 		99C8C59F25FD4B6A00F2FBDA /* ListProfilModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C59E25FD4B6A00F2FBDA /* ListProfilModelView.swift */; };
+		99C8C5A225FD4FA000F2FBDA /* MovingMotifReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C5A125FD4FA000F2FBDA /* MovingMotifReducer.swift */; };
+		99C8C5A425FD4FD100F2FBDA /* MovingMotifModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C5A325FD4FD100F2FBDA /* MovingMotifModelView.swift */; };
 		99D704752596C23B0004024F /* attestation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99D704742596C23B0004024F /* attestation.pdf */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +133,8 @@
 		99C8C59825FD3AC700F2FBDA /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		99C8C59C25FD49ED00F2FBDA /* ListProfilsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProfilsReducer.swift; sourceTree = "<group>"; };
 		99C8C59E25FD4B6A00F2FBDA /* ListProfilModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProfilModelView.swift; sourceTree = "<group>"; };
+		99C8C5A125FD4FA000F2FBDA /* MovingMotifReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingMotifReducer.swift; sourceTree = "<group>"; };
+		99C8C5A325FD4FD100F2FBDA /* MovingMotifModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingMotifModelView.swift; sourceTree = "<group>"; };
 		99D704742596C23B0004024F /* attestation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = attestation.pdf; sourceTree = "<group>"; };
 		99D7047F2596C88C0004024F /* AttestationCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AttestationCovid.entitlements; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 		99C8C59A25FD49B600F2FBDA /* CA */ = {
 			isa = PBXGroup;
 			children = (
+				99C8C5A025FD4F7A00F2FBDA /* MovingMotifs */,
 				99C8C59B25FD49D200F2FBDA /* ListProfils */,
 			);
 			path = CA;
@@ -392,6 +397,15 @@
 				99C8C59E25FD4B6A00F2FBDA /* ListProfilModelView.swift */,
 			);
 			path = ListProfils;
+			sourceTree = "<group>";
+		};
+		99C8C5A025FD4F7A00F2FBDA /* MovingMotifs */ = {
+			isa = PBXGroup;
+			children = (
+				99C8C5A125FD4FA000F2FBDA /* MovingMotifReducer.swift */,
+				99C8C5A325FD4FD100F2FBDA /* MovingMotifModelView.swift */,
+			);
+			path = MovingMotifs;
 			sourceTree = "<group>";
 		};
 		99D704732596C2250004024F /* Ressources */ = {
@@ -665,7 +679,9 @@
 				99B4C6E325A269C200C6E135 /* qrcodeUtils.swift in Sources */,
 				9916A581255F3982003FFCD2 /* MainView.swift in Sources */,
 				9933953425A3D560003E4F52 /* Raison.swift in Sources */,
+				99C8C5A225FD4FA000F2FBDA /* MovingMotifReducer.swift in Sources */,
 				9933952A25A3BD8C003E4F52 /* ListPDFView.swift in Sources */,
+				99C8C5A425FD4FD100F2FBDA /* MovingMotifModelView.swift in Sources */,
 				9964E8B3255EFDC000082D5D /* Profil.swift in Sources */,
 				99B4C6ED25A2973D00C6E135 /* DateFormatUtils.swift in Sources */,
 				99432E6925B467DF008B046A /* ChoiceButtonRaisonView.swift in Sources */,

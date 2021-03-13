@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Raison: Codable, Equatable {
+public struct Raison: Codable, Equatable {
     let code: String
     let label: String
 

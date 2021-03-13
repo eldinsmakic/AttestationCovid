@@ -8,17 +8,17 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AppState: Equatable {
+public struct AppState: Equatable {
     var routerState: RouterState
     var raisonState: RaisonState
 }
 
-enum AppAction {
+public enum AppAction {
     case router(RouterAction)
     case raison(RaisonAction)
 }
 
-let appReducer = Reducer<AppState, AppAction, Void>.combine(Reducer<AppState, AppAction,Void> {
+public let appReducer = Reducer<AppState, AppAction, Void>.combine(Reducer<AppState, AppAction,Void> {
     _, _, _ in
     return .none
     },
