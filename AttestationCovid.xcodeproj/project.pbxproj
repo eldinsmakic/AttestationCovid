@@ -318,9 +318,8 @@
 		9964E8B1255EFD9400082D5D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				99C8C59725FD376200F2FBDA /* PDF */,
 				9964E8B2255EFDC000082D5D /* Profil.swift */,
-				9986BEC52596730100F1F98A /* ProfilePDF.swift */,
-				9986BECA2596738A00F1F98A /* RaisonPDF.swift */,
 				9933953325A3D560003E4F52 /* Raison.swift */,
 			);
 			path = Models;
@@ -359,6 +358,15 @@
 				99B4C6EC25A2973D00C6E135 /* DateFormatUtils.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		99C8C59725FD376200F2FBDA /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				9986BEC52596730100F1F98A /* ProfilePDF.swift */,
+				9986BECA2596738A00F1F98A /* RaisonPDF.swift */,
+			);
+			path = PDF;
 			sourceTree = "<group>";
 		};
 		99D704732596C2250004024F /* Ressources */ = {

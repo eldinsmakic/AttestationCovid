@@ -128,25 +128,19 @@ struct MovingMotifFormView: View {
     func createPDfAndShowIt(viewStore: ViewStore<AppState, AppAction>) {
         let selectedPorfil = viewStore.raisonState.profilsChoices.filter({ $0.isChecked })
         let selectedRaisons = viewStore.raisonState.raisonsChoices.filter({ $0.isChecked }).map({ RaisonPDF(rawValue: $0.raison.code)! })
-        selectedPorfil.forEach { profile in
+        selectedPorfil.forEach { profilChoice in
 
-        let profilePDF = ProfilePDF(
-                lastname: profile.profil.lastName,
-                firstname: profile.profil.firstName,
-                birthday: profile.profil.birthday,
-                placeofbirth: profile.profil.birthPlace,
-                address: profile.profil.address,
-                zipcode: profile.profil.zipcode,
-                city: profile.profil.locality,
+            let profilPDF = ProfilPDF(
+                profil: profilChoice.profil,
                 datesortie: Date(),
                 heuresortie: Date()
             )
 
-            let data = generatePdf(profile: profilePDF, reasons: selectedRaisons)
+            let data = generatePdf(profilPDF: profilPDF, reasons: selectedRaisons)
             let fileManager = FileManagerPDF.shared
             let date = Date().getDateAndHour()
 
-            let fileName =  "\(profile.profil.firstName)_\(selectedRaisons[0])_\(date)"
+            let fileName =  "\(profilChoice.profil.firstName)_\(selectedRaisons[0])_\(date)"
             let result = fileManager.add(pdfName: fileName, withData: data)
 
             if result {

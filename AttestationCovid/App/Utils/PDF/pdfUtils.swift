@@ -23,7 +23,7 @@ let sizeFont = CGFloat(11.0)
 let font =  UIFont(name: "HelveticaNeue-Thin", size: sizeFont)!
 //let font = UIFont.systemFont(ofSize: 11)
 
-func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
+func generatePdf(profilPDF: ProfilPDF, reasons: [RaisonPDF]) -> Data? {
     let pdfBase = Bundle.main.url(forResource: "attestation", withExtension: "pdf", subdirectory: nil, localization: nil)!
 
     let dateFormater = DateFormatter()
@@ -37,15 +37,15 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
 
     let creationHour = creationInstant.getHours()
 
-    let lastname = profile.lastname
-    let firstname = profile.firstname
-    let birthday = profile.birthday
-    let placeofbirth = profile.placeofbirth
-    let address = profile.address
-    let zipcode = profile.zipcode
-    let city = profile.city
-    let datesortie = profile.datesortie
-    let heuresortie = profile.heuresortie
+    let lastname = profilPDF.profil.lastName
+    let firstname = profilPDF.profil.firstName
+    let birthday = profilPDF.profil.birthday
+    let placeofbirth = profilPDF.profil.birthPlace
+    let address = profilPDF.profil.address
+    let zipcode = profilPDF.profil.zipcode
+    let city = profilPDF.profil.locality
+    let datesortie = profilPDF.datesortie
+    let heuresortie = profilPDF.heuresortie
 
 
   let data = [
@@ -81,9 +81,9 @@ func generatePdf(profile: ProfilePDF, reasons: [RaisonPDF]) -> Data? {
         page1.draw(text: "X", x: 72, y: CGFloat(ys[$0.rawValue]!))
     }
 
-    page1.draw(text: profile.city, x: 105, y: 286)
-    page1.draw(text: profile.datesortie.getDate(), x: 91, y: 267)
-    page1.draw(text: profile.heuresortie.getHours(), x: 312, y: 267)
+    page1.draw(text: profilPDF.profil.locality, x: 105, y: 286)
+    page1.draw(text: profilPDF.datesortie.getDate(), x: 91, y: 267)
+    page1.draw(text: profilPDF.heuresortie.getHours(), x: 312, y: 267)
 
 
     page1.draw(text: "Date de création", x: 479, y: 130)

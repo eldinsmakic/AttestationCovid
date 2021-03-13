@@ -33,6 +33,8 @@ struct ChoiceButtonProfil: View {
                         .font(.title2)
                         .padding()
                 }
+            }.onAppear {
+                profilChoice.isChecked = false
             }
         }
     }
