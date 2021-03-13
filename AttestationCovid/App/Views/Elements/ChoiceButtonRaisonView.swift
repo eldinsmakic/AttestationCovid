@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ChoiceButtonRaison: View {
+struct ChoiceButtonRaisonView: View {
     let store: Store<RaisonState,RaisonAction>
     @State var raisonChoice: RaisonChoice
 

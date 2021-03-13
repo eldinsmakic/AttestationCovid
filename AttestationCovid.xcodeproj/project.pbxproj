@@ -19,7 +19,7 @@
 		9912175C255DCDE700F3EA7C /* ProfilDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9912175B255DCDE700F3EA7C /* ProfilDetailView.swift */; };
 		9916A563255F207B003FFCD2 /* ProfilLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A562255F207B003FFCD2 /* ProfilLocalData.swift */; };
 		9916A570255F2E29003FFCD2 /* MovingMotifFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A56F255F2E29003FFCD2 /* MovingMotifFormView.swift */; };
-		9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */; };
+		9916A579255F2EB9003FFCD2 /* ChoiceButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A578255F2EB9003FFCD2 /* ChoiceButtonView.swift */; };
 		9916A581255F3982003FFCD2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9916A580255F3982003FFCD2 /* MainView.swift */; };
 		9918512125A9CA3700BC7FD3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9918512025A9CA3700BC7FD3 /* README.md */; };
 		9918512825A9CF0100BC7FD3 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 9918512725A9CF0100BC7FD3 /* example.png */; };
@@ -33,8 +33,8 @@
 		9933952A25A3BD8C003E4F52 /* ListPDFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933952925A3BD8C003E4F52 /* ListPDFView.swift */; };
 		9933952F25A3D4FC003E4F52 /* FormData.json in Resources */ = {isa = PBXBuildFile; fileRef = 9933952E25A3D4FC003E4F52 /* FormData.json */; };
 		9933953425A3D560003E4F52 /* Raison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9933953325A3D560003E4F52 /* Raison.swift */; };
-		99432E6925B467DF008B046A /* ChoiceButtonRaison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99432E6825B467DF008B046A /* ChoiceButtonRaison.swift */; };
-		99432E6E25B46D75008B046A /* ChoiceButtonProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99432E6D25B46D75008B046A /* ChoiceButtonProfil.swift */; };
+		99432E6925B467DF008B046A /* ChoiceButtonRaisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99432E6825B467DF008B046A /* ChoiceButtonRaisonView.swift */; };
+		99432E6E25B46D75008B046A /* ChoiceButtonProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99432E6D25B46D75008B046A /* ChoiceButtonProfilView.swift */; };
 		995761D7259A9EBF00A25B5D /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 995761D6259A9EBF00A25B5D /* ComposableArchitecture */; };
 		996327932596AD68003E34D4 /* PdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996327922596AD68003E34D4 /* PdfView.swift */; };
 		9964E8B3255EFDC000082D5D /* Profil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9964E8B2255EFDC000082D5D /* Profil.swift */; };
@@ -45,6 +45,7 @@
 		99B4C6E325A269C200C6E135 /* qrcodeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */; };
 		99B4C6E825A27FA700C6E135 /* PDFImageAnnotationn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */; };
 		99B4C6ED25A2973D00C6E135 /* DateFormatUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B4C6EC25A2973D00C6E135 /* DateFormatUtils.swift */; };
+		99C8C59925FD3AC700F2FBDA /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C8C59825FD3AC700F2FBDA /* TitleTextFieldView.swift */; };
 		99D704752596C23B0004024F /* attestation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99D704742596C23B0004024F /* attestation.pdf */; };
 /* End PBXBuildFile section */
 
@@ -100,7 +101,7 @@
 		9912175B255DCDE700F3EA7C /* ProfilDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilDetailView.swift; sourceTree = "<group>"; };
 		9916A562255F207B003FFCD2 /* ProfilLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilLocalData.swift; sourceTree = "<group>"; };
 		9916A56F255F2E29003FFCD2 /* MovingMotifFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingMotifFormView.swift; sourceTree = "<group>"; };
-		9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
+		9916A578255F2EB9003FFCD2 /* ChoiceButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonView.swift; sourceTree = "<group>"; };
 		9916A580255F3982003FFCD2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9918512025A9CA3700BC7FD3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9918512725A9CF0100BC7FD3 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
@@ -114,8 +115,8 @@
 		9933952925A3BD8C003E4F52 /* ListPDFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPDFView.swift; sourceTree = "<group>"; };
 		9933952E25A3D4FC003E4F52 /* FormData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FormData.json; sourceTree = "<group>"; };
 		9933953325A3D560003E4F52 /* Raison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raison.swift; sourceTree = "<group>"; };
-		99432E6825B467DF008B046A /* ChoiceButtonRaison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonRaison.swift; sourceTree = "<group>"; };
-		99432E6D25B46D75008B046A /* ChoiceButtonProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonProfil.swift; sourceTree = "<group>"; };
+		99432E6825B467DF008B046A /* ChoiceButtonRaisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonRaisonView.swift; sourceTree = "<group>"; };
+		99432E6D25B46D75008B046A /* ChoiceButtonProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonProfilView.swift; sourceTree = "<group>"; };
 		996327922596AD68003E34D4 /* PdfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfView.swift; sourceTree = "<group>"; };
 		9964E8B2255EFDC000082D5D /* Profil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profil.swift; sourceTree = "<group>"; };
 		9964E8BA255F000300082D5D /* ListProfilsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProfilsView.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrcodeUtils.swift; sourceTree = "<group>"; };
 		99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFImageAnnotationn.swift; sourceTree = "<group>"; };
 		99B4C6EC25A2973D00C6E135 /* DateFormatUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtils.swift; sourceTree = "<group>"; };
+		99C8C59825FD3AC700F2FBDA /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		99D704742596C23B0004024F /* attestation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = attestation.pdf; sourceTree = "<group>"; };
 		99D7047F2596C88C0004024F /* AttestationCovid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AttestationCovid.entitlements; sourceTree = "<group>"; };
 		A699F9C1E884DC2729CC21A5 /* Pods-AttestationCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttestationCovid.debug.xcconfig"; path = "Target Support Files/Pods-AttestationCovid/Pods-AttestationCovid.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,9 +268,10 @@
 		9916A577255F2E46003FFCD2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				9916A578255F2EB9003FFCD2 /* ChoiceButton.swift */,
-				99432E6825B467DF008B046A /* ChoiceButtonRaison.swift */,
-				99432E6D25B46D75008B046A /* ChoiceButtonProfil.swift */,
+				9916A578255F2EB9003FFCD2 /* ChoiceButtonView.swift */,
+				99432E6825B467DF008B046A /* ChoiceButtonRaisonView.swift */,
+				99432E6D25B46D75008B046A /* ChoiceButtonProfilView.swift */,
+				99C8C59825FD3AC700F2FBDA /* TitleTextFieldView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -630,7 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9916A579255F2EB9003FFCD2 /* ChoiceButton.swift in Sources */,
+				9916A579255F2EB9003FFCD2 /* ChoiceButtonView.swift in Sources */,
 				992F521F25AB906800716AA3 /* UIActivityViewControllerView.swift in Sources */,
 				9986BEC62596730100F1F98A /* ProfilePDF.swift in Sources */,
 				9916A563255F207B003FFCD2 /* ProfilLocalData.swift in Sources */,
@@ -643,13 +646,14 @@
 				9933952A25A3BD8C003E4F52 /* ListPDFView.swift in Sources */,
 				9964E8B3255EFDC000082D5D /* Profil.swift in Sources */,
 				99B4C6ED25A2973D00C6E135 /* DateFormatUtils.swift in Sources */,
-				99432E6925B467DF008B046A /* ChoiceButtonRaison.swift in Sources */,
+				99432E6925B467DF008B046A /* ChoiceButtonRaisonView.swift in Sources */,
 				99B4C6E825A27FA700C6E135 /* PDFImageAnnotationn.swift in Sources */,
 				9986BEBE2596717600F1F98A /* pdfUtils.swift in Sources */,
 				9918514325A9D77600BC7FD3 /* FileManagerPDF.swift in Sources */,
 				9964E8BB255F000300082D5D /* ListProfilsView.swift in Sources */,
 				996327932596AD68003E34D4 /* PdfView.swift in Sources */,
-				99432E6E25B46D75008B046A /* ChoiceButtonProfil.swift in Sources */,
+				99432E6E25B46D75008B046A /* ChoiceButtonProfilView.swift in Sources */,
+				99C8C59925FD3AC700F2FBDA /* TitleTextFieldView.swift in Sources */,
 				9986BECB2596738A00F1F98A /* RaisonPDF.swift in Sources */,
 				99121728255DCC2F00F3EA7C /* AttestationCovidApp.swift in Sources */,
 			);

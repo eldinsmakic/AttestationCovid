@@ -81,7 +81,7 @@ struct MovingMotifFormView: View {
                         Spacer()
                         List{
                             ForEach(viewStore.raisonState.raisonsChoices, id: \.raison.id) { raisonChoice in
-                                ChoiceButtonRaison(
+                                ChoiceButtonRaisonView(
                                     store: self.store.scope(
                                         state: \.raisonState,
                                         action: AppAction.raison),
@@ -97,7 +97,7 @@ struct MovingMotifFormView: View {
                             .font(.title)
                         List {
                             ForEach(viewStore.raisonState.profilsChoices, id: \.profil.id) { user in
-                                ChoiceButtonProfil(
+                                ChoiceButtonProfilView(
                                     store: self.store.scope(
                                         state: \.raisonState,
                                         action: AppAction.raison
