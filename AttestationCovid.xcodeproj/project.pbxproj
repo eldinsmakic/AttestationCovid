@@ -329,12 +329,36 @@
 		9986BEBC2596715000F1F98A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				9986BEBD2596717500F1F98A /* pdfUtils.swift */,
-				99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */,
-				99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */,
-				99B4C6EC25A2973D00C6E135 /* DateFormatUtils.swift */,
+				99C8C59625FD369D00F2FBDA /* Date */,
+				99C8C59525FD368100F2FBDA /* QRCode */,
+				99C8C59425FD367400F2FBDA /* PDF */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		99C8C59425FD367400F2FBDA /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				9986BEBD2596717500F1F98A /* pdfUtils.swift */,
+				99B4C6E725A27FA700C6E135 /* PDFImageAnnotationn.swift */,
+			);
+			path = PDF;
+			sourceTree = "<group>";
+		};
+		99C8C59525FD368100F2FBDA /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				99B4C6E225A269C200C6E135 /* qrcodeUtils.swift */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		99C8C59625FD369D00F2FBDA /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				99B4C6EC25A2973D00C6E135 /* DateFormatUtils.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		99D704732596C2250004024F /* Ressources */ = {
