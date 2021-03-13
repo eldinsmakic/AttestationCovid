@@ -41,14 +41,13 @@ struct MainView: View {
                 get: \.currentTabView,
                         send: {.router(.changeTabView($0))}
             )) {
-
                 MovingMotifFormView(store: self.store, raisons: raisons)
                     .tabItem {
                         Image(systemName: viewStore.state.currentTabView == 0 ? "house.fill" : "house")
                         Text("Home")
                     }.tag(0)
 
-                ListProfilsView(store: .init(initialState: .init(), reducer: listProfilsReducer, environment: ()))
+                ListProfilsView()
                     .tabItem {
                         Image(systemName: viewStore.state.currentTabView == 1 ? "person.fill" : "person")
                         Text("Profiles")
