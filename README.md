@@ -13,7 +13,7 @@ Here is an Example
 
 Little demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q3zFtBUVmF8" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=q3zFtBUVmF8
 
 ## Purpose of this app
 
